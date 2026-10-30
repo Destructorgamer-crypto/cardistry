@@ -1,337 +1,267 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="tapete">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MathLab — Preparación del examen</title>
-<!-- KaTeX por CDN: requiere conexión a Internet para mostrar las fórmulas -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baraja · aprende cardistry y magia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0c16;--c1:#131730;--c2:#1b2042;--tx:#e8eaf8;--mu:#9aa3cc;--ac:#6d7bff;--vi:#9b6dff;--ok:#3ddc97;--ko:#ff6b81;--ln:#2a3060}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(1200px 500px at 70% -10%,#1d1f4d55,transparent),var(--bg);color:var(--tx);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
-nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 18px;background:#0a0c16ee;backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
-nav b{margin-right:auto;font-size:18px;letter-spacing:.3px}nav b span{color:var(--ac)}
-main{max-width:1100px;margin:0 auto;padding:22px 16px 60px;animation:fi .35s}
-@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-h1{font-size:clamp(24px,4vw,36px);margin:.2em 0}h2{margin:.3em 0 .6em}h3{margin:.2em 0 .4em}
-.mut{color:var(--mu);font-size:14px}.card{background:linear-gradient(160deg,var(--c1),var(--c2));border:1px solid var(--ln);border-radius:14px;padding:18px;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.tc{cursor:pointer;transition:.2s}.tc:hover{transform:translateY(-3px);border-color:var(--ac);box-shadow:0 8px 24px #6d7bff22}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.stat{padding:14px}.stat b{font-size:28px;display:block;color:var(--ac)}
-.bar{height:8px;background:#0c0f24;border-radius:9px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--vi));transition:width .5s}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
-.b{background:var(--c2);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:9px 16px;font:inherit;cursor:pointer;transition:.15s}.b:hover{border-color:var(--ac);background:#242a58}
-.b.p{background:linear-gradient(90deg,var(--ac),var(--vi));border:0;font-weight:600}.b.s{padding:4px 12px}.b.act{border-color:var(--ac);background:#2a3270}
-input.ai,select,input[type=number]{background:#0c0f24;color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:9px 12px;font:inherit;min-width:0}input.ai{width:min(320px,100%)}
-.op{display:flex;gap:10px;align-items:center;padding:10px 14px;margin:6px 0;border:1px solid var(--ln);border-radius:10px;cursor:pointer;background:#0f1330}.op:hover{border-color:var(--ac)}
-.row .op{margin:0;padding:8px 14px}
-.q{font-size:18px;margin:10px 0}.fb{margin-top:10px;padding:12px 14px;border-radius:10px;border-left:4px solid var(--ac);background:#0f1330}.fb.ok{border-color:var(--ok)}.fb.ko{border-color:var(--ko)}.fb.hi{border-color:var(--vi)}
-.dg{width:min(340px,100%);display:block;margin:8px 0}.dg text{fill:#dfe3ff;font-size:14px}
-.fm{background:#0f1330;border-radius:10px;padding:6px 12px;margin:8px 0;overflow-x:auto}
-.katex-display{overflow-x:auto;overflow-y:hidden;margin:.4em 0}ul{padding-left:20px}
-.g{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.g button{width:38px;height:38px;padding:0}.g .an{background:#2a3270;border-color:var(--ac)}
-.good{color:var(--ok)}.bad{color:var(--ko)}.warn{background:#3a2a10;border:1px solid #7a5a20;padding:8px 12px;border-radius:10px;font-size:14px}
-table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--ln);padding:6px 8px;text-align:left}details{margin:6px 0}summary{cursor:pointer}
-@media(max-width:600px){main{padding:14px 10px}.q{font-size:16px}}
+:root{--bg:#0f2a22;--bg2:#143629;--ink:#f3ecd8;--mut:#9db5a8;--a:#f2c14e;--b:#e8573c;--line:rgba(255,255,255,.12);--red:#d63a3a;--ease:cubic-bezier(.22,1,.36,1)}
+[data-theme=medianoche]{--bg:#0b0d1f;--bg2:#13173a;--ink:#e9ecff;--mut:#8f97d1;--a:#7c8cff;--b:#ff6ad5}
+[data-theme=rubi]{--bg:#2a0a12;--bg2:#3a0f1a;--ink:#fde9e4;--mut:#d1a0a0;--a:#ff5d6c;--b:#ffc371}
+[data-theme=papel]{--bg:#efe6d2;--bg2:#e3d8bf;--ink:#231d14;--mut:#6f6550;--a:#c2410c;--b:#1d4ed8;--line:rgba(0,0,0,.14)}
+[data-theme=oceano]{--bg:#06222c;--bg2:#0a3341;--ink:#e2f8f6;--mut:#7fb9bd;--a:#2ee6c5;--b:#3aa0ff}
+[data-theme=neon]{--bg:#0a0a0a;--bg2:#171717;--ink:#f5f5f5;--mut:#9a9a9a;--a:#c6ff3d;--b:#ff2fa0}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;min-height:100vh;overflow-x:hidden;transition:background .6s var(--ease),color .6s var(--ease)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(600px circle at var(--mx,50%) var(--my,30%),color-mix(in srgb,var(--a) 16%,transparent),transparent 70%);transition:background .3s}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background-image:repeating-linear-gradient(45deg,var(--ink) 0 1px,transparent 1px 7px)}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* barra */
+.bar{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:-.03em;text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo i{width:14px;height:20px;border-radius:3px;background:var(--a);display:block;transform:rotate(-14deg);box-shadow:8px 2px 0 var(--b)}
+nav{margin-left:auto;display:flex;gap:18px;font-size:.92rem}
+nav a{text-decoration:none;color:var(--mut);transition:color .2s}nav a:hover{color:var(--ink)}
+.palette-btn{border:1px solid var(--line);background:transparent;border-radius:99px;padding:6px 14px;font-size:.88rem;transition:background .2s}
+.palette-btn:hover{background:var(--bg2)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:center;padding:56px 0 40px;min-height:calc(100vh - 60px)}
+h1{font-size:clamp(3.4rem,9vw,7.6rem);line-height:.88;letter-spacing:-.055em;font-weight:800;font-variation-settings:"opsz" 96}
+h1 span{display:block;overflow:hidden}
+h1 span b{display:inline-block;font-weight:inherit;transform:translateY(105%);animation:up 1.1s var(--ease) forwards}
+h1 span:nth-child(2) b{animation-delay:.12s;color:transparent;-webkit-text-stroke:2px var(--a)}
+h1 span:nth-child(3) b{animation-delay:.24s}
+@keyframes up{to{transform:none}}
+.lead{max-width:34ch;margin:26px 0 28px;color:var(--mut);font-size:1.12rem}
+.cta{display:inline-flex;gap:10px;align-items:center;background:var(--a);color:var(--bg);border:0;border-radius:99px;padding:14px 26px;font-weight:700;text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s}
+.cta:hover{transform:translateY(-3px) rotate(-1.5deg);box-shadow:6px 6px 0 var(--b)}
+
+/* mesa de cartas */
+.table{position:relative;height:440px;display:grid;place-items:center}
+.deck{position:relative;width:110px;height:158px}
+.card{position:absolute;inset:0;border-radius:11px;background:#fbf7ea;color:#1a1a1a;box-shadow:0 10px 24px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.12);transition:transform .9s var(--ease),translate .3s var(--ease);cursor:pointer;user-select:none;font-weight:800}
+.card:hover{translate:0 -16px}
+.card .r{position:absolute;top:8px;left:10px;font-size:1.3rem;line-height:1;text-align:center}
+.card .r small{display:block;font-size:1.1rem}
+.card .big{position:absolute;inset:0;display:grid;place-items:center;font-size:3rem}
+.card.red{color:var(--red)}
+.card.back{background:var(--a);background-image:repeating-linear-gradient(45deg,transparent 0 6px,rgba(0,0,0,.18) 6px 8px),repeating-linear-gradient(-45deg,transparent 0 6px,rgba(0,0,0,.18) 6px 8px);border:6px solid #fbf7ea}
+.moves{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;position:absolute;bottom:0}
+.chip{border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:7px 15px;font-size:.88rem;transition:all .25s var(--ease)}
+.chip:hover,.chip[aria-pressed=true]{background:var(--a);color:var(--bg);border-color:var(--a);transform:translateY(-2px)}
+
+/* secciones */
+section{padding:84px 0 20px}
+h2{font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.04em;line-height:1;margin-bottom:12px}
+.sub{color:var(--mut);max-width:52ch;margin-bottom:30px}
+.prog{display:flex;align-items:center;gap:14px;margin:0 0 28px}
+.track{flex:1;height:8px;border-radius:9px;background:var(--bg2);overflow:hidden;border:1px solid var(--line)}
+.track div{height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .8s var(--ease)}
+.tabs{display:inline-flex;background:var(--bg2);border-radius:99px;padding:4px;margin-bottom:22px;border:1px solid var(--line)}
+.tab{border:0;background:transparent;padding:9px 24px;border-radius:99px;font-weight:600;color:var(--mut);transition:all .35s var(--ease)}
+.tab[aria-selected=true]{background:var(--a);color:var(--bg)}
+.lesson{border-top:1px solid var(--line)}
+.lesson:last-child{border-bottom:1px solid var(--line)}
+.lh{width:100%;display:grid;grid-template-columns:34px 1fr auto 24px;gap:16px;align-items:center;background:none;border:0;text-align:left;padding:20px 4px;transition:padding .35s var(--ease)}
+.lh:hover{padding-left:14px}
+.lh strong{font-size:1.35rem;letter-spacing:-.02em}
+.dots{display:flex;gap:4px}.dots i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--a)}.dots i.on{background:var(--a)}
+.chev{transition:transform .5s var(--ease);color:var(--a);font-size:1.3rem}
+.lesson.open .chev{transform:rotate(135deg)}
+.tick{width:26px;height:26px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;transition:all .3s var(--ease);font-size:.9rem;color:transparent}
+.done .tick{background:var(--a);border-color:var(--a);color:var(--bg);transform:rotate(360deg) scale(1.1)}
+.lb{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.lesson.open .lb{grid-template-rows:1fr}
+.lb>div{overflow:hidden}
+.lbi{padding:4px 4px 26px 50px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px}
+.lbi ol{padding-left:20px;display:grid;gap:10px}
+.lbi li::marker{color:var(--a);font-weight:700}
+.tip{background:var(--bg2);border-left:3px solid var(--b);border-radius:0 12px 12px 0;padding:14px 16px;font-size:.95rem;color:var(--mut)}
+.tip b{color:var(--ink)}
+.acts{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn{border:1px solid var(--a);background:transparent;color:var(--ink);border-radius:99px;padding:8px 16px;font-size:.9rem;text-decoration:none;transition:all .25s var(--ease)}
+.btn:hover,.btn.fill{background:var(--a);color:var(--bg)}
+.btn.fill:hover{background:transparent;color:var(--ink)}
+
+/* vídeo */
+.vid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.screen{aspect-ratio:16/9;border-radius:18px;background:var(--bg2);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center;color:var(--mut);text-align:center;padding:20px;box-shadow:10px 10px 0 color-mix(in srgb,var(--a) 35%,transparent)}
+.screen iframe{width:100%;height:100%;border:0}
+.field{display:flex;gap:8px;margin-top:18px}
+input[type=url]{flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:99px;padding:11px 18px;color:var(--ink);font:inherit}
+.search{display:grid;gap:8px}
+.search a{display:flex;justify-content:space-between;border:1px solid var(--line);border-radius:14px;padding:12px 16px;text-decoration:none;transition:all .3s var(--ease)}
+.search a:hover{background:var(--a);color:var(--bg);transform:translateX(6px)}
+
+/* panel de tema */
+.panel{position:fixed;right:18px;top:72px;z-index:30;width:270px;background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.45);transform:translateY(-12px) scale(.96);opacity:0;pointer-events:none;transition:all .45s var(--ease)}
+.panel.show{transform:none;opacity:1;pointer-events:auto}
+.panel h3{font-size:1rem;margin-bottom:12px}
+.sw{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.sw button{height:46px;border-radius:12px;border:2px solid transparent;position:relative;overflow:hidden;font-size:.72rem;font-weight:700;color:#fff;text-shadow:0 1px 3px #000;transition:transform .3s var(--ease)}
+.sw button:hover{transform:scale(1.07) rotate(-2deg)}
+.sw button[aria-pressed=true]{border-color:var(--ink)}
+.pk{display:flex;justify-content:space-between;align-items:center;font-size:.88rem;margin-top:8px;color:var(--mut)}
+.pk input{width:44px;height:30px;border:0;background:none;padding:0;cursor:pointer}
+
+footer{padding:90px 0 50px;color:var(--mut);font-size:.92rem;text-align:center}
+@media(max-width:820px){.hero,.vid,.lbi{grid-template-columns:1fr}.hero{padding-top:30px}.lbi{padding-left:4px}nav{display:none}.palette-btn{margin-left:auto}.table{height:400px}.lh{grid-template-columns:28px 1fr 24px}.dots{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}h1 span b{transform:none}}
 </style>
 </head>
 <body>
-<nav><b>Math<span>Lab</span></b>
-<button class="b" onclick="go('home')">Inicio</button><button class="b" onclick="go('exam')">Simulacro</button><button class="b" onclick="go('mental')">Cálculo mental</button><button class="b" onclick="go('errors')">Mis errores</button></nav>
-<main id="app"></main>
+
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#top"><i></i>Baraja</a>
+  <nav><a href="#practica">Practica</a><a href="#lecciones">Lecciones</a><a href="#videos">Vídeos</a></nav>
+  <button class="palette-btn" id="pbtn" aria-expanded="false" aria-controls="panel">◐ Colores</button>
+</div></header>
+
+<aside class="panel" id="panel" aria-label="Personalizar colores">
+  <h3>Elige un tapete</h3>
+  <div class="sw" id="sw"></div>
+  <h3>O mezcla los tuyos</h3>
+  <label class="pk">Fondo <input type="color" id="cbg" value="#0f2a22"></label>
+  <label class="pk">Acento <input type="color" id="ca" value="#f2c14e"></label>
+  <label class="pk">Acento 2 <input type="color" id="cb" value="#e8573c"></label>
+  <div class="acts"><button class="btn" id="reset">Restablecer</button></div>
+</aside>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero" id="practica">
+    <div>
+      <h1><span><b>Mueve</b></span><span><b>las</b></span><span><b>cartas.</b></span></h1>
+      <p class="lead">Cardistry para las manos, magia para la mente. Empieza con una baraja y diez minutos al día.</p>
+      <a class="cta" href="#lecciones">Empezar la primera lección</a>
+    </div>
+    <div class="table">
+      <div class="deck" id="deck" aria-label="Baraja interactiva"></div>
+      <div class="moves" id="moves" role="group" aria-label="Movimientos"></div>
+    </div>
+  </div>
+
+  <section id="lecciones">
+    <h2>Lecciones</h2>
+    <p class="sub">Abre una lección, practica los pasos con calma y márcala como hecha. Tu progreso se guarda en este navegador.</p>
+    <div class="prog"><span id="pt">0 de 0</span><div class="track"><div id="pb"></div></div></div>
+    <div class="tabs" role="tablist"><button class="tab" role="tab" data-k="card" aria-selected="true">Cardistry</button><button class="tab" role="tab" data-k="magic" aria-selected="false">Magia</button></div>
+    <div id="list"></div>
+  </section>
+
+  <section id="videos">
+    <h2>Vídeos</h2>
+    <p class="sub">Pega el enlace de cualquier vídeo de YouTube para verlo aquí mientras practicas, o busca tutoriales de cada tema.</p>
+    <div class="vid">
+      <div>
+        <div class="screen" id="screen">Pega un enlace de YouTube y pulsa «Reproducir».</div>
+        <form class="field" id="vf"><input type="url" id="vu" placeholder="https://www.youtube.com/watch?v=..." aria-label="Enlace de YouTube"><button class="btn fill">Reproducir</button></form>
+      </div>
+      <div class="search" id="search"></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap">Practica despacio, la velocidad llega sola. Trata bien tus cartas y tus muñecas.</div></footer>
+
 <script>
-'use strict';
-/* ============ UTILIDADES ============ */
-const T=String.raw,Q=s=>document.querySelector(s);
-const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1)),P=a=>a[R(0,a.length-1)];
-const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
-const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
-const mj=el=>{if(window.renderMathInElement)renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})};
-const fr=(n,d)=>{const g=gcd(n,d);n/=g;d/=g;if(d<0){n=-n;d=-d}return d==1?`${n}`:n<0?T`-\frac{${-n}}{${d}}`:T`\frac{${n}}{${d}}`};
-const simp=N=>{let a=1,b=N;for(let k=2;k*k<=b;k++)while(b%(k*k)==0){b/=k*k;a*=k}return{a,b}};
-const mkR=(a,b,d=1)=>{const g=gcd(a,d)||1;return{a:a/g,b,d:d/g}};
-const rtex=r=>{if(r.b==1)return fr(r.a,r.d);const s=r.a<0?'-':'',a=Math.abs(r.a),n=(a==1?'':a)+T`\sqrt{${r.b}}`;return s+(r.d==1?n:T`\frac{${n}}{${r.d}}`)};
-const fac=N=>{const r=[];for(let p=2;p<=N;p++){let e=0;while(N%p==0){N/=p;e++}if(e)r.push(e>1?`${p}^{${e}}`:p)}return r.join(T`\cdot `)};
-const idx=n=>n==2?'':`[${n}]`;
-const lcm=(a,b)=>a*b/gcd(a,b);
-/* polinomios en x: {grado:coef} */
-const mulP=(p,q)=>{const r={};for(const i in p)for(const j in q)r[+i+ +j]=(r[+i+ +j]||0)+p[i]*q[j];for(const k in r)if(!r[k])delete r[k];return r};
-const pTex=p=>{const ks=Object.keys(p).map(Number).sort((a,b)=>b-a);return ks.map((k,i)=>{const c=p[k];const t=(Math.abs(c)==1&&k?'':Math.abs(c))+(k?'x'+(k>1?`^{${k}}`:''):'');return(c<0?'-':i?'+':'')+t}).join('')||'0'};
-const pEq=(p,q)=>JSON.stringify(Object.keys(p).map(k=>[k,p[k]]))==JSON.stringify(Object.keys(q).map(k=>[k,q[k]]));
-/* ============ ANÁLISIS DE RESPUESTAS ============ */
-function pNum(s){s=s.trim().replace(/−/g,'-').replace(/,/g,'.').replace(/\s/g,'');const m=s.match(/^(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/);if(m)return+m[2]?m[1]/m[2]:null;return/^-?\d+(\.\d+)?$/.test(s)?+s:null}
-function pRad(s){s=s.toLowerCase().replace(/\s|\*|·/g,'').replace(/−/g,'-').replace(/(sqrt|raiz|r)\(/g,'√(').replace(/√\((\d+)\)/g,'√$1').replace(/[()]/g,'');
- const m=s.match(/^(-?\d*)(?:√(\d+))?(?:\/(\d+))?$/);if(!m||!s)return null;if(!m[2]&&(m[1]===''||m[1]==='-'))return null;
- const a=m[1]===''?1:m[1]==='-'?-1:+m[1],b=m[2]?+m[2]:1,d=m[3]?+m[3]:1;if(!d||!b)return null;return{a,b,d,sq:simp(b).a==1}}
-function pPoly(s){s=s.toLowerCase().replace(/\s|\*|·/g,'').replace(/−/g,'-').replace(/²/g,'^2').replace(/³/g,'^3').replace(/-/g,'+-');const o={};
- for(const t of s.split('+')){if(!t)continue;const m=t.match(/^(-?\d*)(x(?:\^(\d+))?)?$/);if(!m||(!m[1]&&!m[2])||(m[1]=='-'&&!m[2]))return null;
- const c=m[1]===''?1:m[1]==='-'?-1:+m[1],e=m[2]?(m[3]?+m[3]:1):0;o[e]=(o[e]||0)+c}
- for(const k in o)if(!o[k])delete o[k];return o}
-const NM={N:'ℕ',Z:'ℤ',Q:'ℚ',I:'𝕀',R:'ℝ'};
-function chk(e,a){
- if(a==null||a==='')return{n:1};
- if(e.type=='mc')return{ok:+a===e.ans};
- if(e.type=='tf')return{ok:(a==='v')===e.ans};
- if(e.type=='multi'){const A=[...a].sort().join(''),B=[...e.ans].sort().join('');return{ok:A==B||(!!e.opt&&A.replace('N','')==B)}}
- if(e.type=='num'){const v=pNum(a);if(v==null)return{inv:1};return{ok:Math.abs(v-e.ans)<=(e.tol||1e-9)}}
- if(e.type=='rad'){const p=pRad(a);if(!p)return{inv:1};if(!p.sq)return{ok:false,msg:'El radical todavía se puede simplificar.'};const u=mkR(p.a,p.b,p.d);return{ok:u.a==e.ans.a&&u.b==e.ans.b&&u.d==e.ans.d}}
- if(e.type=='poly'){const p=pPoly(a);if(!p)return{inv:1};return{ok:pEq(p,e.ans)}}
-}
-/* ============ CONSTRUCTORES DE EJERCICIOS ============ */
-const num=(q,ans,expl,tol=1e-9,x={})=>({type:'num',q,ans,tol,expl,...x});
-const rad=(q,ans,expl,x={})=>({type:'rad',q,ans,expl,...x});
-const pol=(q,ans,expl,x={})=>({type:'poly',q,ans,expl,...x});
-const tf=(q,ans,expl,x={})=>({type:'tf',q,ans,expl,...x});
-const mc=(q,right,wrongs,expl,x={})=>{const ws=[...new Set(wrongs)].filter(w=>w!==right).slice(0,3);const o=sh([right,...ws]);return{type:'mc',q,opts:o,ans:o.indexOf(right),expl,...x}};
-const tri=(a,b,c)=>`<svg viewBox="0 0 220 170" class="dg"><polygon points="30,140 190,140 30,30" fill="none" stroke="#7c8cff" stroke-width="2"/><path d="M30,125H45V140" fill="none" stroke="#7c8cff"/><text x="95" y="160">${a}</text><text x="2" y="90">${b}</text><text x="120" y="78">${c}</text></svg>`;
-const venn=`<svg viewBox="0 0 420 220" class="dg" style="width:min(460px,100%)"><rect x="2" y="2" width="416" height="216" rx="14" fill="none" stroke="#7c8cff"/><text x="14" y="22">ℝ</text><ellipse cx="150" cy="118" rx="132" ry="88" fill="#6d7bff18" stroke="#6d7bff"/><ellipse cx="150" cy="128" rx="92" ry="60" fill="#9b6dff22" stroke="#9b6dff"/><ellipse cx="150" cy="138" rx="50" ry="32" fill="#3ddc9722" stroke="#3ddc97"/><ellipse cx="345" cy="118" rx="62" ry="62" fill="#ff6b8118" stroke="#ff6b81"/><text x="40" y="60">ℚ  (3/4, 2,5)</text><text x="75" y="92">ℤ  (−5, 0)</text><text x="124" y="134">ℕ</text><text x="118" y="152">1, 2, 7</text><text x="322" y="90">𝕀</text><text x="304" y="120">√2, π</text></svg>`;
-/* ============ BANCOS Y GENERADORES (una función por tipo de ejercicio; l = nivel 0,1,2) ============ */
-const POOL=[['5','NZQR',0,'Es un entero positivo: natural, entero, racional y real.'],['-5','ZQR',0,'Entero negativo: no es natural.'],['0','ZQR',0,'Es entero. Estar o no en ℕ depende de la convención, por eso se acepta de las dos formas.'],
-[T`\frac34`,'QR',0,T`Es una fracción de enteros ($0{,}75$, decimal exacto): racional.`],[T`\sqrt2`,'IR',0,'Raíz no exacta: decimal infinito no periódico, irracional.'],[T`\pi`,'IR',0,T`$\pi$ es irracional (decimales infinitos sin periodo).`],
-['2{,}5','QR',0,T`$2{,}5=\frac52$: decimal exacto, racional.`],[T`\sqrt{49}`,'NZQR',0,T`$\sqrt{49}=7$: es natural.`],
-[T`-\frac72`,'QR',1,'Fracción no entera: racional.'],[T`\sqrt{16}`,'NZQR',1,T`$\sqrt{16}=4$.`],[T`-\sqrt9`,'ZQR',1,T`$-\sqrt9=-3$: entero negativo.`],[T`\sqrt{10}`,'IR',1,T`10 no es cuadrado perfecto ($3^2=9<10<16=4^2$): irracional.`],
-[T`0{,}\overline3`,'QR',1,T`Periódico puro: $0{,}\overline3=\frac13$.`],[T`\frac{12}4`,'NZQR',1,T`$\frac{12}{4}=3$.`],[T`\sqrt{\frac94}`,'QR',1,T`$\sqrt{\frac94}=\frac32$.`],[T`-\sqrt7`,'IR',1,'7 no es cuadrado perfecto: irracional (con el signo menos sigue siéndolo).'],
-[T`1{,}2\overline3`,'QR',2,T`Periódico mixto: $1{,}2\overline3=\frac{37}{30}$.`],[T`0{,}\overline{27}`,'QR',2,T`Periódico puro: $0{,}\overline{27}=\frac3{11}$.`],[T`0{,}1010010001\ldots`,'IR',2,'Infinitas cifras sin periodo (el número de ceros crece): irracional.'],
-[T`\sqrt[3]{-8}`,'ZQR',2,T`$\sqrt[3]{-8}=-2$ (índice impar, radicando negativo).`],[T`\sqrt[3]9`,'IR',2,'9 no es cubo perfecto: irracional.'],[T`\frac{\sqrt2}2`,'IR',2,T`$\frac{\sqrt2}{2}=\frac1{\sqrt2}$: racional por irracional (no nulo) es irracional.`],
-[T`\sqrt2\cdot\sqrt8`,'NZQR',2,T`$\sqrt2\cdot\sqrt8=\sqrt{16}=4$.`],[T`2\pi`,'IR',2,'Un racional no nulo por un irracional es irracional.'],[T`-\frac{15}5`,'ZQR',2,T`$-\frac{15}{5}=-3$.`]];
-const multi=l=>{const it=P(POOL.filter(p=>p[2]==l));const s=it[1];return{type:'multi',q:T`Marca todos los conjuntos a los que pertenece $${it[0]}$.`,ans:s,opt:it[0]=='0',expl:`${it[3]} Pertenece a: ${[...s].map(k=>NM[k]).join(', ')}.${it[0]=='0'?' (ℕ opcional según convención)':''}`}};
-const TFB=[[T`$\mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R$.`,1,'Cada conjunto está contenido en el siguiente.'],['Todo número real es racional.',0,T`Falso: $\sqrt2$ y $\pi$ son reales y no racionales.`],[T`$\pi$ es un número racional.`,0,'Falso: es irracional.'],[T`$0{,}\overline3$ es racional.`,1,T`Verdadero: $0{,}\overline3=\frac13$.`],['Todo número entero es natural.',0,T`Falso: $-1$ es entero y no es natural.`],['Un número no puede ser racional e irracional a la vez.',1,T`Verdadero: $\mathbb Q\cap\mathbb I=\varnothing$.`],[T`$\mathbb Q\cup\mathbb I=\mathbb R$.`,1,'Verdadero: los reales son racionales o irracionales.'],['Un decimal con infinitas cifras sin ningún periodo es racional.',0,'Falso: es irracional.'],[T`$\sqrt{16}$ es irracional.`,0,T`Falso: $\sqrt{16}=4$.`],['Todo decimal exacto es racional.',1,T`Verdadero: se escribe como fracción, p. ej. $2{,}5=\frac52$.`],[T`$-3\in\mathbb N$.`,0,'Falso: es entero negativo.']];
-const MCB=[['Un número con decimales infinitos y no periódicos es…','irracional','racional','entero','natural'],[T`La fracción $\frac74$ en decimal es…`,'exacto','periódico puro','periódico mixto','irracional'],['El conjunto más pequeño que contiene a −5 es…','ℤ','ℕ','ℚ','𝕀']];
-const smallest=l=>{const it=P(POOL.filter(p=>p[2]<=l&&p[0]!='0'));const s=it[1],r=s.includes('N')?'ℕ':s.includes('Z')?'ℤ':s.includes('Q')?'ℚ':'𝕀';return mc(T`¿Cuál es el conjunto más pequeño al que pertenece $${it[0]}$?`,r,['ℕ','ℤ','ℚ','𝕀'],it[3]+` El más pequeño es ${r}.`)};
-const irrMC=l=>{const pl=POOL.filter(p=>p[2]<=l),irr=P(pl.filter(p=>p[1][0]=='I')),rat=sh(pl.filter(p=>p[1][0]!='I')).slice(0,3),w=x=>'$'+x[0]+'$';return mc('¿Cuál de estos números es irracional?',w(irr),rat.map(w),irr[3])};
-const dec=l=>{const d=R(2,[10,20,40][l]),n=R(1,d-1);if(n%d==0)return null;const dd=d/gcd(n,d);if(dd==1)return null;let r=dd;while(r%2==0)r/=2;while(r%5==0)r/=5;const c=r==1?'Exacto':gcd(dd,10)==1?'Periódico puro':'Periódico mixto';
- return mc(T`¿Cómo es el decimal de $\frac{${n}}{${d}}$?`,c,['Exacto','Periódico puro','Periódico mixto','No periódico (irracional)'],T`Simplificada: $\frac{${n/gcd(n,d)}}{${dd}}$. ${r==1?'El denominador solo tiene factores 2 y 5: decimal exacto.':gcd(dd,10)==1?'El denominador no tiene factores 2 ni 5: periódico puro.':'El denominador tiene 2 o 5 y además otros factores: periódico mixto.'} Toda fracción es racional, nunca irracional.`)};
-/* Pitágoras */
-const TRI=[[3,4,5],[5,12,13],[8,15,17],[7,24,25],[20,21,29]];
-const trip=l=>{const t=P(TRI.slice(0,l==0?2:l==1?3:5)),k=l==0?1:R(1,l==1?2:3);return t.map(x=>x*k)};
-const hE=(a,b,c)=>T`$c=\sqrt{${a}^2+${b}^2}=\sqrt{${a*a+b*b}}=${c}$.`,lE=(c,b,a)=>T`$x=\sqrt{${c}^2-${b}^2}=\sqrt{${c*c-b*b}}=${a}$.`;
-const CTX=[(a,b,c)=>[T`Una escalera se apoya en una pared: su pie está a ${a} m de la pared y alcanza ${b} m de altura. ¿Cuánto mide la escalera (en m)?`,c,tri(a+' m',b+' m','?'),hE(a,b,c)],
-(a,b,c)=>[T`Un rectángulo mide ${a} cm de base y ${b} cm de altura. Calcula su diagonal (en cm).`,c,tri(a,b,'?'),hE(a,b,c)],
-(a,b,c)=>[T`Un triángulo isósceles tiene base ${2*b} cm y lados iguales de ${c} cm. Calcula su altura (en cm).`,a,tri(b+' (mitad)','?',c),lE(c,b,a)],
-(a,b,c)=>[T`Una antena de ${b} m de altura se sujeta con un cable que toca el suelo a ${a} m de su base. ¿Cuánto mide el cable (en m)?`,c,tri(a+' m',b+' m','?'),hE(a,b,c)],
-(a,b,c)=>[T`Calcula la distancia entre A(1, 2) y B(${1+a}, ${2+b}).`,c,tri(a,b,'?'),hE(a,b,c)],
-(a,b,c)=>[T`Una pantalla rectangular mide ${a} cm de ancho y ${b} cm de alto. ¿Cuánto mide su diagonal (cm)?`,c,tri(a,b,'?'),hE(a,b,c)]];
-/* Radicales equivalentes */
-const rdx=(n,a,m)=>T`\sqrt${idx(n)}{${a}^{${m}}}`;
-const cmp=()=>{const[n1,n2]=P([[2,3],[2,4],[3,4],[3,6],[2,6]]);let a,b,x,y;do{a=R(2,10);b=R(2,10);x=a**(1/n1);y=b**(1/n2)}while(a==b||Math.abs(x-y)<.02);
- const L=lcm(n1,n2),A=a**(L/n1),B=b**(L/n2),f=T`$\sqrt${idx(n1)}{${a}}$`,g=T`$\sqrt${idx(n2)}{${b}}$`;
- return mc(`¿Cuál es mayor, ${f} o ${g}?`,x>y?f:g,[x>y?g:f,'Son iguales','No se pueden comparar'],T`Índice común ${L}: $\sqrt${idx(n1)}{${a}}=\sqrt[${L}]{${a}^{${L/n1}}}=\sqrt[${L}]{${A}}$ y $\sqrt${idx(n2)}{${b}}=\sqrt[${L}]{${b}^{${L/n2}}}=\sqrt[${L}]{${B}}$. Es mayor el de radicando mayor (${Math.max(A,B)}).`)};
-/* Operaciones */
-const sumG=l=>{const n=P([2,3,5,6,7]),m=l==2?3:2;let tot=0,s='',s2='';for(let i=0;i<m;i++){const sg=i?P([1,-1]):1,k=l?R(1,5):1,c=l?(l==2?R(1,3):1):R(1,6),v=sg*c*k;tot+=v;
-  s+=(i?(sg<0?'-':'+'):'')+(c>1?c:'')+T`\sqrt{${k*k*n}}`;s2+=(i?(sg<0?'-':'+'):'')+(c*k>1?c*k:'')+T`\sqrt{${n}}`}
- if(!tot)return null;return rad(T`Simplifica y calcula: $${s}$.`,mkR(tot,n),T`Simplificamos cada radical: $${s}=${s2}$. Son semejantes, así que sumamos coeficientes: $${tot}\sqrt{${n}}$ = $${rtex(mkR(tot,n))}$.`)};
-const NSF=[2,3,5,6,7,10];
-/* Racionalización */
-const racG=l=>{let a,b,c=1,N=0;if(l==0){a=1;b=P([2,3,5,7])}else if(l==1){a=R(2,9);b=P(NSF)}else{a=R(2,9);b=P([2,3,5,6,7]);c=R(2,4);if(R(0,1))N=c*c*b}
- const den=N?T`\sqrt{${N}}`:T`${c>1?c:''}\sqrt{${b}}`,ans=mkR(a,b,c*b);
- return rad(T`Racionaliza y simplifica: $\frac{${a}}{${den}}$.`,ans,T`${N?T`Primero $\sqrt{${N}}=${c}\sqrt{${b}}$. `:''}Multiplicamos numerador y denominador por $\sqrt{${b}}$: $\frac{${a}}{${c>1?c:''}\sqrt{${b}}}=\frac{${a}\sqrt{${b}}}{${c>1?c:''}\sqrt{${b}}\cdot\sqrt{${b}}}=\frac{${a}\sqrt{${b}}}{${c*b}}=${rtex(ans)}$.`)};
-const conjG=()=>{const c=P([1,2]),n=P(c==1?[3,6,7,10]:[6,7,10]),k=R(2,5),d=n-c*c,o=(sg,de)=>T`$\frac{${k}(\sqrt{${n}}${sg}${c})}{${de}}$`;
- return mc(T`Racionaliza $\frac{${k}}{\sqrt{${n}}+${c}}$ (multiplica por el conjugado).`,o('-',d),[o('+',d),o('-',n+c*c),o('-',n)],T`El conjugado de $\sqrt{${n}}+${c}$ es $\sqrt{${n}}-${c}$. Denominador: $(\sqrt{${n}}+${c})(\sqrt{${n}}-${c})=${n}-${c*c}=${d}$. Resultado: $\frac{${k}(\sqrt{${n}}-${c})}{${d}}$.`)};
-/* Identidades notables */
-const idG=l=>{const e=l==2&&R(0,1)?2:1,p=l==0?1:R(1,4),q=l==0?R(1,9):R(1,7),A=pTex({[e]:p}),Qs=`${q}`,prod=R(0,2)==0;
- if(prod){const r=mulP({[e]:p,0:q},{[e]:p,0:-q}),o=R(0,1);return pol(T`Desarrolla: $(${A}${o?'-':'+'}${Qs})(${A}${o?'+':'-'}${Qs})$`,r,T`Suma por diferencia: $(${A}+${Qs})(${A}-${Qs})=(${A})^2-${Qs}^2=${pTex(r)}$.`)}
- const s=R(0,1)?-1:1,B={[e]:p,0:s*q},r=mulP(B,B);return pol(T`Desarrolla: $(${A}${s<0?'-':'+'}${Qs})^2$`,r,T`$(${A}${s<0?'-':'+'}${Qs})^2=(${A})^2${s<0?'-':'+'}2\cdot${A}\cdot${Qs}+${Qs}^2=${pTex(r)}$.`)};
-const G=[];
-G[0]=[multi,multi,()=>{const b=P(TFB);return tf(b[0],!!b[1],b[2])},()=>{const b=P(MCB);return mc(b[0],b[1],b.slice(2),'La respuesta correcta es '+b[1]+'.')},dec,irrMC];
-G[1]=[multi,multi,smallest,irrMC,dec];
-G[2]=[l=>{const[a,b,c]=trip(l),u=P(['cm','m']);return num(T`Un triángulo rectángulo tiene catetos de ${a} ${u} y ${b} ${u}. Calcula la hipotenusa (en ${u}).`,c,hE(a,b,c),1e-9,{svg:tri(a+' '+u,b+' '+u,'?')})},
- l=>{const[a,b,c]=trip(l);return num(T`La hipotenusa de un triángulo rectángulo mide ${c} cm y un cateto ${a} cm. Calcula el otro cateto (en cm).`,b,lE(c,a,b),1e-9,{svg:tri(a,'?',c)})},
- l=>{if(!l)return null;const a=R(2,9),b=R(2,9),c=Math.sqrt(a*a+b*b);return num(T`Catetos de ${a} cm y ${b} cm. Calcula la hipotenusa redondeando a 2 decimales.`,c,T`$c=\sqrt{${a}^2+${b}^2}=\sqrt{${a*a+b*b}}\approx${c.toFixed(2)}$ cm.`,.0051,{svg:tri(a,b,'?')})},
- l=>{const[a,b,c]=trip(l),ok=R(0,1),z=ok?c:c+1,s=sh([a,b,z]);return tf(T`Un triángulo de lados ${s.join(', ')} cm es rectángulo.`,!!ok,T`El lado mayor es ${z}: $${a}^2+${b}^2=${a*a+b*b}$ y $${z}^2=${z*z}$. ${ok?'Coinciden: es rectángulo.':'No coinciden: no es rectángulo.'}`)},
- l=>{const[a,b,c]=trip(l),f=P(CTX)(a,b,c);return num(f[0],f[1],f[3],1e-9,{svg:f[2]})},
- l=>{if(!l)return null;const s=R(2,9);return num(T`Calcula la diagonal de un cuadrado de lado ${s} cm (2 decimales).`,s*Math.SQRT2,T`$d=\sqrt{${s}^2+${s}^2}=\sqrt{${2*s*s}}\approx${(s*Math.SQRT2).toFixed(2)}$ cm.`,.0051,{svg:tri(s,s,'?')})}];
-G[3]=[l=>{const b=R(2,l?5:3),e=R(2,l==2?5:4);return R(0,1)?num(T`Calcula $(-${b})^{${e}}$.`,(-b)**e,T`El paréntesis incluye el signo: $(-${b})^{${e}}=${(-b)**e}$ (exponente ${e%2?'impar: negativo':'par: positivo'}).`):num(T`Calcula $-${b}^{${e}}$.`,-(b**e),T`Sin paréntesis solo se eleva el ${b}: $-${b}^{${e}}=-(${b**e})=${-(b**e)}$.`)},
- l=>{const b=R(2,9);return R(0,1)?num(T`Calcula $(-${b})^0$.`,1,'Todo número distinto de 0 elevado a 0 vale 1.'):num(T`Calcula $-${b}^0$.`,-1,T`$-${b}^0=-(${b}^0)=-1$.`)},
- l=>{const b=R(2,l?6:4),e=R(1,3);return num(T`Calcula $${b}^{-${e}}$ (escribe la fracción como a/b).`,1/b**e,T`$${b}^{-${e}}=\frac1{${b}^{${e}}}=\frac1{${b**e}}$.`)},
- l=>{if(!l)return null;const[p,q]=P([[2,3],[3,2],[1,2],[3,4],[2,5]]),e=R(1,3);return num(T`Calcula $\left(\frac{${p}}{${q}}\right)^{-${e}}$ (fracción a/b).`,q**e/p**e,T`Se invierte la fracción: $\left(\frac{${p}}{${q}}\right)^{-${e}}=\left(\frac{${q}}{${p}}\right)^{${e}}=\frac{${q**e}}{${p**e}}$.`)},
- l=>{const a=P(['a','x','m']),g=()=>{let v;do v=l?R(-5,6):R(2,6);while(!v);return v},m=g(),n=g(),p=g(),o=R(0,l?3:1);let q,r;
-  if(o==0){q=T`$${a}^{${m}}\cdot${a}^{${n}}=${a}^{?}$`;r=m+n}else if(o==1){q=T`$\frac{${a}^{${m}}}{${a}^{${n}}}=${a}^{?}$`;r=m-n}else if(o==2){q=T`$(${a}^{${m}})^{${n}}=${a}^{?}$`;r=m*n}else{q=T`$\frac{${a}^{${m}}\cdot${a}^{${n}}}{${a}^{${p}}}=${a}^{?}$`;r=m+n-p}
-  return num('Simplifica y escribe el exponente que falta. '+q,r,`Aplicando las propiedades (se suman exponentes al multiplicar, se restan al dividir y se multiplican en potencia de potencia) el exponente es ${r}.`)},
- l=>{if(!l)return null;let a,b,c,d;do{a=R(-4,5);b=R(-4,5);c=R(-4,5);d=R(-4,5)}while(!a||!b||!c||!d||a==c||b==d);const f=(x,y)=>T`$x^{${x}}y^{${y}}$`;
-  return mc(T`Simplifica $\dfrac{x^{${a}}y^{${b}}}{x^{${c}}y^{${d}}}$.`,f(a-c,b-d),[f(a+c,b-d),f(a-c,b+d),f(c-a,d-b)],'Se restan los exponentes de cada letra por separado.')},
- ()=>{const F=[T`$a^m\cdot a^n=a^{m\cdot n}$`,T`$(a^m)^n=a^{m+n}$`,T`$\dfrac{a^m}{a^n}=a^{m/n}$`,T`$(a+b)^n=a^n+b^n$`,T`$a^0=0$`,T`$a^{-n}=-a^n$`],Tr=[T`$a^m\cdot a^n=a^{m+n}$`,T`$(a^m)^n=a^{m\cdot n}$`,T`$\dfrac{a^m}{a^n}=a^{m-n}$`,T`$(ab)^n=a^nb^n$`,T`$a^{-n}=\dfrac1{a^n}$`,T`$(a^n)^1=a^n$`],f=P(F);
-  return mc('Detecta el error: ¿cuál de estas igualdades es FALSA?',f,sh(Tr),'Es falsa. Las otras tres son propiedades correctas: producto → se suman exponentes; potencia de potencia → se multiplican; cociente → se restan; exponente negativo → inverso.')},
- l=>{const b=R(2,5),e=R(2,4),v=(-b)**e,ok=R(0,1),sg=R(0,1);const claim=sg?T`$(-${b})^{${e}}=${ok?v:-v}$`:T`$-${b}^{${e}}=${ok?-(b**e):b**e}$`;return tf('¿Es correcta esta igualdad? '+claim,!!ok,T`Con paréntesis, $(-${b})^{${e}}=${v}$; sin paréntesis, $-${b}^{${e}}=${-(b**e)}$.`)}];
-G[4]=[l=>{const n=R(2,5);let m;do m=R(1,4);while(m==n||m%n==0);const E=fr(m,n);return mc(T`Expresa $${rdx(n,'a',m)}$ como potencia de exponente fraccionario.`,T`$a^{${E}}$`,[T`$a^{${fr(n,m)}}$`,T`$a^{${m*n}}$`,T`$a^{${m-n}}$`],T`El exponente del radicando va arriba y el índice abajo: $${rdx(n,'a',m)}=a^{${E}}$.`)},
- l=>{const n=R(2,5);let m;do m=R(1,4);while(m==n||m%n==0||gcd(m,n)>1);const E=fr(m,n),f=(k,j)=>T`$\sqrt${idx(k)}{a${j==1?'':`^{${j}}`}}$`;return mc(T`Expresa $a^{${E}}$ mediante un radical.`,f(n,m),[f(m,n),f(n,m+1),f(n,m+n)],T`El denominador es el índice y el numerador el exponente del radicando: $a^{${E}}=${f(n,m).slice(1,-1)}$.`)},
- l=>{const n=P(l?[2,3,4]:[2,3]),r=n==2?R(2,10):n==3?R(2,5):R(2,3);let m;do m=R(1,l==2?3:2);while(m%n==0);const neg=l==2&&R(0,1),mm=neg?-m:m,B=r**n,E=fr(mm,n);
-  return num(T`Calcula $${B}^{${E}}$ (si sale fracción, escribe a/b).`,neg?1/r**m:r**m,T`$${B}=${r}^{${n}}$, luego $${B}^{${E}}=(${r}^{${n}})^{${E}}=${r}^{${mm}}=${neg?T`\frac1{${r**m}}`:r**m}$.`)},
- l=>{const p=R(2,5),q=R(2,5);if(p==q)return null;const ok=R(0,1);return tf(T`$a^{${fr(p,q)}}=${ok?T`\sqrt${idx(q)}{a${p==1?'':`^{${p}}`}}`:T`\sqrt${idx(p)}{a${q==1?'':`^{${q}}`}}`}$ (con $a>0$).`,!!ok,T`El denominador del exponente es el índice: $a^{p/q}=\sqrt[q]{a^p}$.`)},
- l=>{if(!l)return null;const n=R(2,5);let m;do m=R(1,4);while(m==n||m%n==0);const f=(k,j)=>T`$\sqrt${idx(k)}{a${j==1?'':`^{${j}}`}}$`,E=fr(m,n);return mc(T`Expresa $a^{-${E}}$ mediante radicales.`,T`$\dfrac1{${f(n,m).slice(1,-1)}}$`,[T`$-${f(n,m).slice(1,-1)}$`,f(n,m),T`$\dfrac1{${f(m,n).slice(1,-1)}}$`],T`El signo menos del exponente invierte: $a^{-${E}}=\frac1{a^{${E}}}=\frac1{${f(n,m).slice(1,-1)}}$.`)}];
-G[5]=[l=>{if(l==0){const k=R(1,12);return num(T`Calcula $\sqrt{${k*k}}$.`,k,T`$${k}^2=${k*k}$, luego $\sqrt{${k*k}}=${k}$.`)}
-  if(l==1){const k=R(2,6),n=P([2,3]);return num(T`Calcula $\sqrt${idx(n)}{${k**n}}$.`,k,T`$${k}^{${n}}=${k**n}$, luego la raíz vale ${k}.`)}
-  const c=R(0,3);if(c==0){const k=R(2,6);return num(T`Calcula $\sqrt[3]{-${k**3}}$.`,-k,T`Índice impar: $(-${k})^3=-${k**3}$, luego vale $-${k}$.`)}
-  if(c==1){const[n,k]=P([[4,2],[4,3],[5,2],[4,1]]);return num(T`Calcula $\sqrt[${n}]{${k**n}}$.`,k,T`$${k}^{${n}}=${k**n}$.`)}
-  if(c==2){const a=R(1,6),b=R(a+1,9);return num(T`Calcula $\sqrt{\frac{${a*a}}{${b*b}}}$ (fracción a/b).`,a/b,T`$\sqrt{\frac{${a*a}}{${b*b}}}=\frac{${a}}{${b}}$.`)}
-  const k=R(2,9);return num(T`Calcula $\sqrt{0{,}${k*k<10?'0':''}${k*k}}$ (en decimal).`,k/10,T`$0{,}${k*k<10?'0':''}${k*k}=\frac{${k*k}}{100}$, y su raíz es $\frac{${k}}{10}=${k/10}$.`)},
- l=>{const i=P([2,3,4,5]),neg=R(0,1),r=R(2,4),ex=i%2==1;return tf(T`$\sqrt${idx(i)}{${neg?'-':''}${r**i}}$ es un número real.`,!neg||ex,neg?(ex?T`Verdadero: índice impar, $\sqrt${idx(i)}{-${r**i}}=-${r}$.`:T`Falso: índice par con radicando negativo no tiene raíz real, pues ninguna potencia par es negativa.`):'Verdadero: radicando positivo.')},
- l=>{let k=R(2,l?12:8),N;do N=k*k+R(1,2*k);while(0);const o=n=>`entre ${n} y ${n+1}`;return mc(T`¿Entre qué enteros está $\sqrt{${N}}$? Justifícalo.`,o(k),[o(k-1),o(k+1),`es exacta y vale ${k}`],T`$${k}^2=${k*k}<${N}<${(k+1)**2}=${k+1}^2$, luego ${o(k)} (no es exacta).`)},
- l=>{const k=R(2,l?12:9),N=k*k+R(1,2*k),v=Math.sqrt(N);return num(T`Aproxima $\sqrt{${N}}$ con una cifra decimal (sin calculadora, estima).`,v,T`Está entre ${k} y ${k+1}; el valor aproximado es ${v.toFixed(1)}.`,.0501)},
- l=>{const ks=sh([R(2,9),R(2,9),R(2,9)]),N=R(2,60);if([2,3,5,6,7,8].every(()=>0))return null;let w=N;while(Math.sqrt(w)%1==0)w++;return mc('¿Cuál de estas raíces NO es exacta?',T`$\sqrt{${w}}$`,ks.map(k=>T`$\sqrt{${k*k}}$`),T`${w} no es cuadrado perfecto; las otras tres sí.`)}];
-G[6]=[l=>{const n=R(2,4),k=R(2,4),a=R(2,7);let m;do m=R(1,3);while(m==n);return num(T`Completa: $${rdx(n,a,m)}=\sqrt[${n*k}]{${a}^{?}}$.`,m*k,T`Multiplicamos índice y exponente por ${k}: $\sqrt[${n*k}]{${a}^{${m*k}}}$. Falta ${m*k}.`)},
- l=>{const g=R(2,4),n0=R(2,4),a=R(2,7);let m0;do m0=R(1,4);while(gcd(n0,m0)>1);const ask=R(0,1);return num(T`Simplifica $\sqrt[${g*n0}]{${a}^{${g*m0}}}=\sqrt[${ask?'?':n0}]{${a}^{${ask?m0:'?'}}}$. ¿Qué número falta?`,ask?n0:m0,T`Dividimos índice y exponente entre ${g}: $\sqrt[${n0}]{${a}^{${m0}}}$.`)},
- l=>{const n=R(2,4),a=R(2,7),k=R(2,3);let m;do m=R(1,4);while(m==n);const f=(i,e)=>'$'+rdx(i,a,e)+'$';return mc(T`¿Cuál es equivalente a $${rdx(n,a,m)}$?`,f(n*k,m*k),[f(n*k,m),f(n*k,m*k+1),f(n+k,m+k)],`Hay que multiplicar índice y exponente por el mismo número: ${k}.`)},
- l=>{const n=R(2,4),m=R(1,4),k=R(2,3),a=R(2,7),ok=R(0,1);const n2=ok?n*k:n+k,m2=ok?m*k:m+k;const eq=m*n2==m2*n;return tf(T`$${rdx(n,a,m)}=${rdx(n2,a,m2)}$`,eq,eq?T`Verdadero: $\frac{${m}}{${n}}=\frac{${m2}}{${n2}}$, mismo exponente fraccionario.`:T`Falso: $\frac{${m}}{${n}}\neq\frac{${m2}}{${n2}}$. Hay que multiplicar índice y exponente por lo mismo.`)},
- l=>{const S=[[2,3],[2,5],[3,4],[4,6],[3,6],[4,10],[2,3,4],[3,4,6],[2,4,5]],ix=l==0?P(S.slice(0,3)):l==1?P(S.slice(3,6)):P(S.slice(6)),L=ix.reduce(lcm);return num('¿Cuál es el menor índice común para escribir con el mismo índice los radicales '+ix.map((i,j)=>T`$\sqrt${idx(i)}{${j+2}}$`).join(', ')+'?',L,T`Es el mínimo común múltiplo de ${ix.join(', ')}: ${L}.`)},
- l=>{if(!l)return null;return cmp()}];
-G[7]=[l=>{const k=P(l==0?[2,3,4]:l==1?[2,3,4,5,6,7,8,9]:[3,4,5,6,7,8,9,10,11,12]),n=P(l==0?[2,3,5]:[2,3,5,6,7,10,11,13]),N=k*k*n,c=l==2&&R(0,1)?R(2,4):1,ans=mkR(c*k,n);
-  return rad(T`Extrae todos los factores posibles: $${c>1?c:''}\sqrt{${N}}$`,ans,T`$${N}=${fac(N)}=${k}^2\cdot${n}$, así que $\sqrt{${N}}=${k}\sqrt{${n}}$.${c>1?T` Multiplicando por ${c}: $${c*k}\sqrt{${n}}$.`:''} Resultado: $${rtex(ans)}$.`)},
- l=>{if(l==0)return null;const k=R(2,5),n=P([2,3,4,5,6,7]),f=(a,b)=>T`$${a==1?'':a}\sqrt[3]{${b}}$`;return mc(T`Extrae factores: $\sqrt[3]{${k**3*n}}$`,f(k,n),[f(n,k),f(k*k,n),T`$\sqrt[3]{${k*n}}$`],T`$${k**3*n}=${k}^3\cdot${n}$, y $\sqrt[3]{${k}^3}=${k}$. Resultado: $${k}\sqrt[3]{${n}}$.`)},
- l=>{if(l==0){const a=R(2,5),b=P([2,3,5,6]);return num(T`Introduce el factor: $${a}\sqrt{${b}}=\sqrt{?}$ ¿Qué número va dentro?`,a*a*b,T`$${a}\sqrt{${b}}=\sqrt{${a}^2\cdot${b}}=\sqrt{${a*a*b}}$.`)}
-  if(l==1){const a=R(2,4),b=P([2,3,4,5]);return num(T`Introduce el factor: $${a}\sqrt[3]{${b}}=\sqrt[3]{?}$ ¿Qué número va dentro?`,a**3*b,T`Se eleva al índice (3): $${a}^3\cdot${b}=${a**3*b}$.`)}
-  const a=R(2,9),b=P([2,3,5,6,7]),v=R(0,2);return v==0?tf(T`$-${a}\sqrt{${b}}=-\sqrt{${a*a*b}}$`,true,T`Verdadero: el signo menos se queda fuera y el ${a} entra como $${a}^2=${a*a}$.`):v==1?tf(T`$-${a}\sqrt{${b}}=\sqrt{-${a*a*b}}$`,false,T`Falso: una raíz cuadrada de un número negativo no es real, y el signo menos no puede entrar en una raíz de índice par.`):tf(T`$${a}\sqrt{${b}}=\sqrt{${a*b}}$`,false,T`Falso: el factor debe elevarse al índice: $${a}\sqrt{${b}}=\sqrt{${a*a*b}}$.`)}];
-G[8]=[sumG,sumG,l=>{const n=P(NSF),m=P(NSF),a=l?R(1,4):1,b=l?R(1,4):1,r=simp(n*m),ans=mkR(a*b*r.a,r.b);return rad(T`Multiplica y simplifica: $${a>1?a:''}\sqrt{${n}}\cdot${b>1?b:''}\sqrt{${m}}$`,ans,T`$\sqrt{${n}}\cdot\sqrt{${m}}=\sqrt{${n*m}}${r.a>1?T`=${r.a}\sqrt{${r.b}}`:''}$${a*b>1?T`, multiplicado por ${a*b}`:''}: $${rtex(ans)}$.`)},
- l=>{const n=P([2,3,5,6,7]),k=R(2,6),a=R(1,4),b=l?R(1,4):1,ans=mkR(a*k,1,b);return rad(T`Divide y simplifica: $\dfrac{${a>1?a:''}\sqrt{${k*k*n}}}{${b>1?b:''}\sqrt{${n}}}$`,ans,T`$\sqrt{${k*k*n}}=${k}\sqrt{${n}}$ y al dividir entre $\sqrt{${n}}$ desaparece la raíz: $\frac{${a*k}}{${b}}=${rtex(ans)}$.`)},
- l=>{if(l<2)return null;let a,b,c,k,t;do{a=R(1,5);b=R(1,5);c=R(1,5);k=R(2,3);t=a-b*k+c}while(!t);const n=P([2,3,5,7]),ans=mkR(t,n);return rad(T`Calcula: $${a>1?a:''}\sqrt{${n}}-\left(${b>1?b:''}\sqrt{${k*k*n}}-${c>1?c:''}\sqrt{${n}}\right)$`,ans,T`$\sqrt{${k*k*n}}=${k}\sqrt{${n}}$. Dentro del paréntesis: $${b*k}\sqrt{${n}}-${c}\sqrt{${n}}=${b*k-c}\sqrt{${n}}$. Con el menos delante: $${a}-(${b*k-c})=${t}$. Resultado $${rtex(ans)}$.`)},
- l=>{if(!l)return null;let a=R(2,12),b;do b=R(2,12);while(a==b);return num(T`Calcula: $(\sqrt{${a}}+\sqrt{${b}})(\sqrt{${a}}-\sqrt{${b}})$`,a-b,T`Suma por diferencia: $(\sqrt{${a}})^2-(\sqrt{${b}})^2=${a}-${b}=${a-b}$.`)},
- l=>{if(l<2)return null;const n=P([2,3,5,6,7]),k=R(2,4),s=n+k*k;return mc(T`Desarrolla: $(\sqrt{${n}}+${k})^2$`,T`$${s}+${2*k}\sqrt{${n}}$`,[T`$${s}$`,T`$${s}+${k}\sqrt{${n}}$`,T`$${s}\sqrt{${n}}$`],T`$(\sqrt{${n}})^2+2\cdot${k}\sqrt{${n}}+${k}^2=${n}+${2*k}\sqrt{${n}}+${k*k}=${s}+${2*k}\sqrt{${n}}$.`)},
- l=>{const A=P([4,9,16,25,36]),B=P([4,9,16,25,36]),s=R(0,1);return s?tf(T`$\sqrt{${A}}+\sqrt{${B}}=\sqrt{${A+B}}$`,false,T`Falso: $\sqrt{${A}}+\sqrt{${B}}=${Math.sqrt(A)+Math.sqrt(B)}$ y $\sqrt{${A+B}}$ no vale eso. La raíz de una suma no es la suma de raíces.`):tf(T`$\sqrt{${A}}\cdot\sqrt{${B}}=\sqrt{${A*B}}$`,true,T`Verdadero: ambas valen ${Math.sqrt(A)*Math.sqrt(B)}.`)},
- l=>{const n=P([2,3,5,6]),m=P([2,3,5,6]),k1=R(2,5),k2=R(2,5),ok=n==m;return tf(T`$\sqrt{${k1*k1*n}}$ y $\sqrt{${k2*k2*m}}$ son radicales semejantes (tras simplificar).`,ok,T`$\sqrt{${k1*k1*n}}=${k1}\sqrt{${n}}$ y $\sqrt{${k2*k2*m}}=${k2}\sqrt{${m}}$. ${ok?'Mismo radicando: semejantes.':'Radicandos distintos: no son semejantes.'}`)}];
-G[9]=[racG,racG,l=>{if(l<2)return null;return conjG()},l=>{const a=R(2,9),b=P([2,3,5,7]),ok=R(0,1);return tf(T`$\frac{${a}}{\sqrt{${b}}}=${ok?T`\frac{${a}\sqrt{${b}}}{${b}}`:T`\frac{${a}\sqrt{${b}}}{${2*b}}`}$`,!!ok,T`Se multiplica por $\sqrt{${b}}$ arriba y abajo: $\sqrt{${b}}\cdot\sqrt{${b}}=${b}$, así que el denominador es ${b}.`)},
- l=>{const b=P([2,3,5,7]),f=x=>'$'+x+'$';return mc(T`Racionalizar $\frac{1}{\sqrt{${b}}}$ da…`,f(T`\frac{\sqrt{${b}}}{${b}}`),[f(T`\frac{1}{${b}}`),f(T`\sqrt{${b}}`),f(T`\frac{\sqrt{${b}}}{\sqrt{${b}}}`)],T`Multiplicamos por $\frac{\sqrt{${b}}}{\sqrt{${b}}}=1$: $\frac{\sqrt{${b}}}{${b}}$.`)}];
-G[10]=[idG,idG,idG,l=>{const p=l?R(1,4):1,q=R(1,7)*(R(0,1)?-1:1),B={1:p,0:q},C=mulP(B,B),w=[{2:p*p,0:q*q},{2:p*p,1:p*q,0:q*q},{2:p*p,1:-2*p*q,0:q*q}],f=x=>'$'+pTex(x)+'$';return mc(T`¿Cuál es el desarrollo de $(${pTex(B)})^2$?`,f(C),w.map(f),T`$(${p>1?p:''}x${q<0?'-':'+'}${Math.abs(q)})^2=${pTex(C)}$. No olvides el doble producto, con su signo.`)},
- l=>{const t=P([20,30,40,50,100]),d=R(1,l==2?3:2),m=R(0,2);if(m==0)return num(T`Calcula $${t+d}^2$ mentalmente con una identidad notable.`,(t+d)**2,T`$(${t}+${d})^2=${t*t}+${2*t*d}+${d*d}=${(t+d)**2}$.`);if(m==1)return num(T`Calcula $${t-d}^2$ mentalmente con una identidad notable.`,(t-d)**2,T`$(${t}-${d})^2=${t*t}-${2*t*d}+${d*d}=${(t-d)**2}$.`);return num(T`Calcula $${t+d}\cdot${t-d}$ mentalmente con una identidad notable.`,t*t-d*d,T`$(${t}+${d})(${t}-${d})=${t}^2-${d}^2=${t*t-d*d}$.`)},
- l=>{const a=R(1,9),m=R(0,2);return m==0?num(T`Completa: $x^2+${2*a}x+${a*a}=(x+?)^2$`,a,T`El término independiente ${a*a} es $${a}^2$ y el doble producto $2\cdot${a}x=${2*a}x$: $(x+${a})^2$.`):m==1?num(T`Completa: $x^2-${2*a}x+${a*a}=(x-?)^2$`,a,T`$(x-${a})^2=x^2-${2*a}x+${a*a}$.`):num(T`Completa: $x^2-${a*a}=(x+${a})(x-?)$`,a,T`Suma por diferencia: $x^2-${a}^2=(x+${a})(x-${a})$.`)},
- l=>{const p=l?R(2,5):1,q=R(1,7)*(R(0,1)?-1:1);return num(T`En el desarrollo de $(${p>1?p:''}x${q<0?'-':'+'}${Math.abs(q)})^2$, ¿cuál es el coeficiente del término en $x$?`,2*p*q,T`Doble producto: $2\cdot${p}x\cdot(${q})=${2*p*q}x$.`)},
- l=>{const a=R(1,9),ok=R(0,1),m=R(0,1)?-1:1,B={1:1,0:m*a},C=mulP(B,B),cand=ok?C:{2:1,0:a*a};return tf(T`$(x${m<0?'-':'+'}${a})^2=${pTex(cand)}$`,!!ok,T`El desarrollo correcto es $${pTex(C)}$. ${ok?'La igualdad es correcta.':'Falta el doble producto.'}`)}];
-/* Pistas generales (progresivas) */
-const H=[['Simplifica primero: ¿es una raíz exacta o una fracción reducible?','Piensa si es entero, si se escribe como fracción y si su decimal termina o se repite.','Recuerda: ℕ⊂ℤ⊂ℚ⊂ℝ y 𝕀 no comparte elementos con ℚ.'],
-['Simplifica el número antes de clasificarlo.','Una raíz no exacta o un decimal infinito sin periodo es irracional.','Todo número entero también es racional y real.'],
-['Dibuja el triángulo e identifica la hipotenusa (opuesta al ángulo recto).','Usa $a^2+b^2=c^2$.','Para un cateto, resta: $b^2=c^2-a^2$. Al final calcula la raíz.'],
-['Fíjate en si el signo está dentro del paréntesis.','Producto: se suman exponentes; cociente: se restan; potencia de potencia: se multiplican.','$a^{-n}=\\frac1{a^n}$ y $a^0=1$.'],
-['En $a^{m/n}$ el índice es el denominador.','El exponente del radicando es el numerador.','Si el exponente es negativo, se invierte.'],
-['Busca el número que elevado al índice dé el radicando.','Memoriza cuadrados hasta 144 y cubos hasta 216.','Índice par con radicando negativo: no hay raíz real.'],
-['Multiplica (o divide) índice y exponente por el mismo número.','Dos radicales son equivalentes si $m/n$ es igual.','Para comparar, reduce a índice común con el mcm.'],
-['Descompón el radicando en factores primos.','Extraer: cada potencia con exponente ≥ índice sale. Introducir: eleva al índice.','Tras extraer, comprueba que no queda un cuadrado dentro.'],
-['Simplifica cada radical antes de operar.','Solo se suman radicales semejantes: se suman los coeficientes.','Cuida el signo menos delante de un paréntesis.'],
-['Multiplica numerador y denominador por el radical del denominador.','$\\sqrt b\\cdot\\sqrt b=b$.','Simplifica la fracción final.'],
-['Reconoce la identidad: suma, diferencia o suma por diferencia.','$(a\\pm b)^2=a^2\\pm2ab+b^2$; $(a+b)(a-b)=a^2-b^2$.','Comprueba con $x=1$.']];
-function make(t,l){for(let i=0;i<40;i++){const e=P(G[t])(l);if(e){e.t=t;e.lv=l;e.hints=e.hints||H[t];return e}}throw Error('gen '+t)}
-/* ============ DATOS DE LOS TEMAS ============ */
-const TN=['Esquema de los números reales','Clasificar números en el esquema','Teorema de Pitágoras','Potencias y propiedades','Radicales y exponentes fraccionarios','Resolver una raíz','Radicales equivalentes','Extraer e introducir factores','Operaciones con radicales','Racionalización','Identidades notables'];
-const CA=['Esquema dels nombres reals','Classificació de nombres','Teorema de Pitàgores','Potències i propietats','Radicals i exponents fraccionaris','Resoldre una arrel','Radicals equivalents','Extreure i introduir factors','Operacions amb radicals','Racionalització','Identitats notables'];
-const LV=['Fácil','Medio','Difícil'];
-const L=[
-{s:T`Los <b>números reales</b> (ℝ) son todos los que se pueden colocar en la recta numérica. Se dividen en <b>racionales</b> (ℚ: se escriben como fracción $\frac ab$; su decimal es exacto, como $0{,}75$, o periódico, como $0{,}\overline3$) e <b>irracionales</b> (𝕀: decimal infinito y no periódico, como $\sqrt2=1{,}41421\ldots$ o $\pi$). Dentro de ℚ está ℤ (…, −2, −1, 0, 1, …) y dentro de ℤ está ℕ (1, 2, 3, …). <b>Convención:</b> según tu clase, ℕ empieza en 1 o incluye el 0; en esta web el 0 se acepta dentro y fuera de ℕ.`,f:[T`\mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R`,T`\mathbb Q\cup\mathbb I=\mathbb R,\qquad\mathbb Q\cap\mathbb I=\varnothing`],d:venn,
- e:T`$-5$: ℤ, ℚ, ℝ. $0$: ℤ, ℚ, ℝ (y ℕ si lo incluyes). $\frac34=0{,}75$: ℚ, ℝ. $\sqrt2$ y $\pi$: 𝕀, ℝ. $2{,}5=\frac52$: ℚ, ℝ. $\sqrt{49}=7$: ℕ, ℤ, ℚ, ℝ.`,r:[T`Creer que $\sqrt{49}$ es irracional: primero hay que calcular la raíz.`,'Pensar que todo decimal con infinitas cifras es irracional: si se repite, es racional.','Olvidar que un número pertenece a varios conjuntos a la vez.']},
-{s:T`Para clasificar un número: 1) <b>simplifícalo</b> (raíces exactas, fracciones reducibles); 2) si es entero, es ℤ (y ℕ si es positivo); 3) si se escribe como fracción o su decimal es exacto o periódico, es ℚ; 4) si es una raíz no exacta o un decimal infinito sin periodo, es 𝕀. Todo número real está en ℝ. Decimal exacto: $0{,}25=\frac14$. Periódico puro: $0{,}\overline3=\frac13$. Periódico mixto: $0{,}1\overline6=\frac16$.`,f:[T`0{,}\overline7=\frac79`,T`1{,}2\overline3=\frac{37}{30}`],d:venn,
- e:T`$\frac{12}4=3$: aunque sea una fracción, es natural. $-\sqrt9=-3$: entero. $\sqrt{10}$: $3^2<10<4^2$, no exacta, irracional.`,r:['Clasificar una fracción sin simplificarla (12/4 = 3).','Creer que toda raíz es irracional.','Decir que −3 es natural.']},
-{s:T`En un triángulo rectángulo (con un ángulo de 90°) los lados que forman el ángulo recto son los <b>catetos</b> y el lado opuesto, el mayor, es la <b>hipotenusa</b>. El cuadrado de la hipotenusa es la suma de los cuadrados de los catetos. Para saber si un triángulo es rectángulo, comprueba si el cuadrado del lado mayor es igual a la suma de los cuadrados de los otros dos. En problemas reales busca el triángulo rectángulo oculto: diagonales, alturas, escaleras, distancias.`,f:[T`a^2+b^2=c^2`,T`c=\sqrt{a^2+b^2},\qquad a=\sqrt{c^2-b^2}`],d:tri('a','b','c (hipotenusa)'),
- e:T`Catetos de 6 cm y 8 cm: $c^2=6^2+8^2=36+64=100$, luego $c=\sqrt{100}=10$ cm.`,r:['Sumar los lados sin elevarlos al cuadrado.',T`Para un cateto, sumar en lugar de restar: $a^2=c^2-b^2$.`,'Olvidar la raíz cuadrada al final.']},
-{s:T`$a^n$ es multiplicar $a$ por sí mismo $n$ veces ($a$ es la base y $n$ el exponente). Con exponente 0 vale 1 y con exponente negativo se invierte la base. Cuidado con los signos: $(-2)^4=16$, porque el paréntesis mete el signo en la base, pero $-2^4=-16$, porque solo se eleva el 2 y después se cambia el signo.`,f:[T`a^m\cdot a^n=a^{m+n}\qquad\frac{a^m}{a^n}=a^{m-n}\qquad(a^m)^n=a^{m\cdot n}`,T`(ab)^n=a^nb^n\qquad\left(\frac ab\right)^n=\frac{a^n}{b^n}`,T`a^0=1\qquad a^1=a\qquad a^{-n}=\frac1{a^n}\qquad\left(\frac ab\right)^{-n}=\left(\frac ba\right)^n`],
- e:T`$\dfrac{2^5\cdot2^{-2}}{2^{1}}=2^{5-2-1}=2^2=4$.`,r:[T`$(a+b)^n\neq a^n+b^n$.`,'Multiplicar los exponentes en un producto de potencias: se suman.',T`$(-3)^2=9$ pero $-3^2=-9$.`,T`$2^{-3}=\frac18$, no $-8$.`]},
-{s:T`Una raíz $\sqrt[n]{a}$ tiene signo radical, <b>índice</b> $n$ (si no se escribe, es 2) y <b>radicando</b> $a$. Es la operación inversa de la potencia: $\sqrt[n]{a}=b$ si $b^n=a$. Toda raíz se escribe como potencia de exponente fraccionario: el exponente del radicando va en el numerador y el índice en el denominador.`,f:[T`\sqrt[n]{a^m}=a^{m/n}`,T`a^{-m/n}=\frac{1}{\sqrt[n]{a^m}}`],
- e:T`$\sqrt{25}=5$; $\sqrt[3]{8}=2$; $16^{1/2}=\sqrt{16}=4$; $8^{2/3}=\sqrt[3]{8^2}=(\sqrt[3]{8})^2=2^2=4$.`,r:[T`Poner el índice en el numerador: en $a^{m/n}$ el índice es el denominador.`,'Olvidar que el exponente negativo invierte la base.']},
-{s:T`Para calcular $\sqrt[n]{a}$, busca el número que elevado a $n$ da $a$. Memoriza los <b>cuadrados perfectos</b> (1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144) y los <b>cubos perfectos</b> (1, 8, 27, 64, 125, 216). Si el radicando no es potencia perfecta, la raíz no es exacta (es irracional) y se aproxima entre dos enteros consecutivos. Con índice impar el radicando puede ser negativo; con índice par, un radicando negativo no tiene raíz real.`,f:[T`\sqrt[3]{-27}=-3`,T`\sqrt{-9}\notin\mathbb R`],
- e:T`$\sqrt{50}$: $7^2=49<50<64=8^2$, luego $7<\sqrt{50}<8$; como 50 está muy cerca de 49, $\sqrt{50}\approx7{,}07$.`,r:[T`Decir que $\sqrt{-9}=-3$: $(-3)^2=+9$, no existe en ℝ.`,'Escribir raíces de índice impar con radicando negativo como si no existieran.']},
-{s:T`Dos radicales son <b>equivalentes</b> si valen lo mismo. Se obtienen multiplicando (amplificar) o dividiendo (simplificar) el índice y el exponente del radicando por el mismo número, porque no cambia el exponente fraccionario $\frac mn$. Para comparar radicales de distinto índice se reducen a <b>índice común</b> (el mínimo común múltiplo de los índices).`,f:[T`\sqrt[n]{a^m}=\sqrt[nk]{a^{mk}}`,T`\sqrt[6]{a^4}=\sqrt[3]{a^2}`],
- e:T`$\sqrt[3]{2^2}=\sqrt[6]{2^4}$ (×2). $\sqrt[12]{5^8}=\sqrt[3]{5^2}$ (÷4).`,r:['Cambiar solo el índice o solo el exponente.','Sumar el mismo número en lugar de multiplicar.']},
-{s:T`<b>Extraer factores:</b> descompón el radicando en factores primos; cada factor cuyo exponente sea mayor o igual que el índice sale de la raíz (los que sobran se quedan dentro). <b>Introducir factores:</b> el número de fuera se eleva al índice y se multiplica por el radicando. Un factor negativo no puede entrar en una raíz de índice par: el signo menos se queda fuera.`,f:[T`\sqrt{a^2b}=a\sqrt b`,T`a\sqrt[n]{b}=\sqrt[n]{a^nb}`],
- e:T`$\sqrt{72}=\sqrt{2^3\cdot3^2}=\sqrt{2^2\cdot2\cdot3^2}=2\cdot3\sqrt2=6\sqrt2$. Al revés: $3\sqrt5=\sqrt{3^2\cdot5}=\sqrt{45}$.`,r:[T`Al introducir, no elevar al índice: $3\sqrt5\neq\sqrt{15}$.`,'Sacar un factor sin dividir bien los exponentes.',T`Meter un signo menos dentro de una raíz cuadrada: $-3\sqrt5=-\sqrt{45}$.`]},
-{s:T`Solo se pueden sumar o restar directamente los <b>radicales semejantes</b> (mismo índice y mismo radicando): se suman los coeficientes. A veces hay que simplificar primero para descubrir que lo son. Para multiplicar o dividir radicales del mismo índice se usan las propiedades de las raíces y luego se simplifica. Cuida los signos delante de los paréntesis.`,f:[T`a\sqrt n\pm b\sqrt n=(a\pm b)\sqrt n`,T`\sqrt a\cdot\sqrt b=\sqrt{ab}\qquad\frac{\sqrt a}{\sqrt b}=\sqrt{\frac ab}`],
- e:T`$\sqrt{18}+\sqrt{8}=3\sqrt2+2\sqrt2=5\sqrt2$. $\sqrt2\cdot\sqrt8=\sqrt{16}=4$.`,r:[T`$\sqrt a+\sqrt b\neq\sqrt{a+b}$.`,T`$\sqrt2+\sqrt2=2\sqrt2$, no $\sqrt4$.`,'Perder un signo menos al quitar un paréntesis.']},
-{s:T`Racionalizar es eliminar la raíz del denominador sin cambiar el valor de la fracción: se multiplica numerador y denominador por el mismo radical (equivale a multiplicar por 1). Se hace para operar y comparar con más facilidad. Después se simplifica. Si el denominador es un binomio con raíces, se multiplica por su <b>conjugado</b> (cambiando el signo central).`,f:[T`\frac{a}{\sqrt b}=\frac{a\sqrt b}{b}`,T`\frac{1}{\sqrt a+c}=\frac{\sqrt a-c}{a-c^2}`],
- e:T`$\dfrac{6}{\sqrt3}=\dfrac{6\sqrt3}{\sqrt3\cdot\sqrt3}=\dfrac{6\sqrt3}{3}=2\sqrt3$.`,r:['Multiplicar solo el denominador.','Olvidar simplificar el resultado.','En el conjugado, cambiar el signo equivocado.']},
-{s:T`Son productos de binomios que se desarrollan directamente. <b>Suma al cuadrado:</b> cuadrado del primero, doble producto, cuadrado del segundo. <b>Diferencia al cuadrado:</b> igual, pero el doble producto lleva signo menos. <b>Suma por diferencia:</b> cuadrado del primero menos cuadrado del segundo (el término central desaparece). Para comprobar el resultado, sustituye $x=1$ o $x=2$ en ambos lados.`,f:[T`(a+b)^2=a^2+2ab+b^2`,T`(a-b)^2=a^2-2ab+b^2`,T`(a+b)(a-b)=a^2-b^2`],
- e:T`$(3x-2)^2=(3x)^2-2\cdot3x\cdot2+2^2=9x^2-12x+4$. Comprobación con $x=1$: $(3-2)^2=1$ y $9-12+4=1$.`,r:[T`$(a+b)^2\neq a^2+b^2$ (falta el doble producto).`,T`Coeficientes: $(3x)^2=9x^2$, no $3x^2$.`,T`$(x-3)^2=x^2-6x+9$, no $x^2-9$.`]}];
-/* ============ ESTADO Y PERSISTENCIA ============ */
-const KEY='mathlab_v1';let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
-S=Object.assign({tp:{},wrong:[],sims:[],time:0,mental:{done:0,ok:0},last:0},S||{});
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
-const tp=i=>S.tp[i]||(S.tp[i]={st:0,done:0,ok:0});
-const prog=i=>{const t=tp(i);return Math.round((t.st?20:0)+80*Math.min(1,t.ok/15))};
-const mast=i=>{const t=tp(i);return t.done?t.ok/t.done*Math.min(1,t.done/8):0};
-const tot=()=>{let d=S.mental.done,o=S.mental.ok;for(let i=0;i<11;i++){d+=tp(i).done;o+=tp(i).ok}return{d,o}};
-const key=e=>e.t+e.q+e.opts;
-function rec(e,ok){const t=tp(e.t);t.done++;if(ok)t.ok++;const k=key(e);S.wrong=S.wrong.filter(w=>key(w)!=k);if(!ok){const c={...e};delete c.user;S.wrong.push(c);if(S.wrong.length>120)S.wrong.shift()}save()}
-const fmtT=s=>s>=3600?Math.floor(s/3600)+' h '+Math.floor(s%3600/60)+' min':Math.floor(s/60)+' min '+s%60+' s';
-const mmss=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
-/* ============ NAVEGACIÓN ============ */
-let view='home',arg=0,tab='learn',timers=[];
-function go(v,a,t){timers.forEach(clearInterval);timers=[];view=v;arg=a||0;tab=t||'learn';if(v=='topic')S.last=arg;window.scrollTo(0,0);render()}
-function render(){const el=Q('#app');({home,topic,errors,exam,mental})[view](el);mj(el)}
-/* ============ EJERCICIOS: render, lectura y sesión ============ */
-const PH={num:'Tu respuesta (fracciones: a/b)',rad:'Ej.: 6√2 ó √2/2',poly:'Ej.: x^2+6x+9'};
-function renderEx(h,e,u){let x=`<div class="q">${e.q}</div>${e.svg||''}`;
- if(e.type=='mc')x+=e.opts.map((o,k)=>`<label class="op"><input type="radio" name="r" value="${k}" ${u!=null&&u==k?'checked':''}><span>${o}</span></label>`).join('');
- else if(e.type=='tf')x+=['v','f'].map(k=>`<label class="op"><input type="radio" name="r" value="${k}" ${u===k?'checked':''}><span>${k=='v'?'Verdadero':'Falso'}</span></label>`).join('');
- else if(e.type=='multi')x+='<div class="row">'+'NZQIR'.split('').map(k=>`<label class="op"><input type="checkbox" value="${k}" ${u&&u.includes(k)?'checked':''}><span>${NM[k]}</span></label>`).join('')+'</div>';
- else x+=`<div class="row"><input class="ai" autocomplete="off" placeholder="${PH[e.type]}" value="${u||''}">${e.type=='rad'?'<button type="button" class="b s" data-i="√">√</button><button type="button" class="b s" data-i="/">/</button>':e.type=='poly'?'<button type="button" class="b s" data-i="x">x</button><button type="button" class="b s" data-i="^">^</button>':''}</div>`;
- h.innerHTML=x;mj(h);h.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const i=h.querySelector('.ai');i.value+=b.dataset.i;i.focus()})}
-const getAns=(h,e)=>{if(e.type=='mc'||e.type=='tf'){const c=h.querySelector('input:checked');return c?c.value:null}
- if(e.type=='multi')return[...h.querySelectorAll('input:checked')].map(c=>c.value).join('');return h.querySelector('.ai').value};
-const ansTxt=(e,a)=>a==null||a===''?'(sin responder)':e.type=='mc'?e.opts[a]:e.type=='tf'?(a=='v'?'Verdadero':'Falso'):e.type=='multi'?[...a].map(k=>NM[k]).join(', '):a;
-/* Comprueba un ejercicio dentro de un contenedor; cb(ok) se llama solo en el primer intento */
-function attach(h,e,o={}){const ex=h.querySelector('.exb'),fb=h.querySelector('.fb');let first=true,hi=0;renderEx(ex,e);
- const ck=()=>{const r=chk(e,getAns(ex,e));if(r.n){fb.className='fb';fb.innerHTML='Escribe o selecciona una respuesta.';return}
-  if(r.inv){fb.className='fb';fb.innerHTML='Formato no válido. Usa números, fracciones a/b'+(e.type=='rad'?', y √ para raíces (ej. 3√5).':e.type=='poly'?' y potencias con ^ (ej. x^2).':'.');return}
-  if(first){first=false;rec(e,r.ok);o.cb&&o.cb(r.ok)}
-  fb.className='fb '+(r.ok?'ok':'ko');fb.innerHTML=(r.ok?'<b class="good">Correcta.</b> ':'<b class="bad">Incorrecta.</b> '+(r.msg||'')+(e.type=='mc'?'<br>Respuesta correcta: '+e.opts[e.ans]:'')+'<br>')+'<br>'+e.expl+(r.ok?'':'<br><span class="mut">Puedes volver a intentarlo (el primer intento es el que cuenta).</span>');mj(fb)};
- h.querySelector('.ck').onclick=ck;h.querySelector('.hn').onclick=()=>{if(hi>=e.hints.length){fb.className='fb hi';fb.innerHTML='No hay más pistas.';return}fb.className='fb hi';fb.innerHTML='<b>Pista '+(hi+1)+'/'+e.hints.length+':</b> '+e.hints.slice(0,++hi).join('<br>');mj(fb)};
- ex.addEventListener('keydown',ev=>{if(ev.key=='Enter')ck()})}
-const exBox=()=>`<div class="exb"></div><div class="row"><button class="b p ck">Comprobar</button><button class="b hn">Pista</button>`;
-function runSess(h,list,o={}){let i=0,ok=0;const show=()=>{if(i>=list.length)return end();const e=list[i];
-  h.innerHTML=`<div class="card"><div class="mut">Ejercicio ${i+1} de ${list.length} · ${LV[e.lv]}${o.tag?' · '+TN[e.t]:''}</div><div class="bar"><i style="width:${i/list.length*100}%"></i></div>${exBox()}<button class="b nx">Siguiente ejercicio</button></div><div class="fb" id="fb"></div></div>`;
-  const c=h.querySelector('.card');c.querySelector('.fb')||0;attach(c,e,{cb:r=>{if(r)ok++}});c.querySelector('.nx').onclick=()=>{i++;show()}};
- const end=()=>{h.innerHTML=`<div class="card"><h3>Sesión terminada</h3><p>Aciertos al primer intento: <b>${ok} de ${list.length}</b> (${Math.round(ok/list.length*100)}%).</p><div class="row"><button class="b p" id="re">Nueva sesión</button><button class="b" onclick="go('home')">Inicio</button><button class="b" onclick="go('errors')">Mis errores</button></div></div>`;h.querySelector('#re').onclick=()=>o.again?o.again():go(view,arg,tab)};show()}
-function build(id,lv,n){const out=[],seen=new Set();for(let i=0;i<n;i++){const l=lv<0?Math.min(2,Math.floor(i*3/n)):lv;let e,t=0;do e=make(id,l);while(seen.has(e.q+e.opts)&&++t<25);seen.add(e.q+e.opts);out.push(e)}return out}
-/* ============ VISTAS ============ */
-function home(el){const t=tot(),pr=[...Array(11).keys()].map(prog),avg=Math.round(pr.reduce((a,b)=>a+b)/11),ms=[...Array(11).keys()].map(mast),prep=Math.round(ms.reduce((a,b)=>a+b)/11*100),weak=[...Array(11).keys()].sort((a,b)=>ms[a]-ms[b]).slice(0,4);
- const lab=prep<25?'Fase inicial':prep<50?'En progreso':prep<75?'Buen nivel':'Nivel alto';
- el.innerHTML=`<h1>MathLab — Preparación del examen</h1><p class="mut">Matemáticas 4.º ESO · Estudia, practica y comprueba tu nivel.</p>
- ${window.katex?'':'<div class="warn">Las fórmulas necesitan conexión a Internet (KaTeX por CDN). Conéctate y recarga la página.</div>'}
- <div class="row"><button class="b p" onclick="cont()">Continuar estudiando</button><button class="b" onclick="errPractice()">Practicar errores</button><button class="b" onclick="go('exam')">Simulacro de examen</button><button class="b" onclick="go('mental')">Reto de cálculo mental</button></div>
- <div class="stats"><div class="card stat"><b>${avg}%</b>Temario completado<div class="bar"><i style="width:${avg}%"></i></div></div><div class="card stat"><b>${t.o}</b>respuestas correctas de ${t.d}</div><div class="card stat"><b>${prep}%</b>Preparación estimada (${lab})<div class="bar"><i style="width:${prep}%"></i></div></div><div class="card stat"><b>${fmtT(S.time)}</b>Tiempo de práctica</div></div>
- <div class="card"><h3>Temas que más necesitas practicar</h3>${weak.map(i=>`<div class="row"><span style="flex:1">${i+1}. ${TN[i]}</span><span class="mut">${tp(i).done?Math.round(tp(i).ok/tp(i).done*100)+'% acierto':'sin practicar'}</span><button class="b s" onclick="go('topic',${i},'practice')">Practicar</button></div>`).join('')}</div>
- <h2>Temas del examen</h2><div class="grid">${TN.map((n,i)=>`<div class="card tc" onclick="go('topic',${i})"><div class="mut">Tema ${i+1} · ${CA[i]}</div><h3>${n}</h3><div class="bar"><i style="width:${prog(i)}%"></i></div><div class="mut">Progreso ${prog(i)}% · Dominio ${tp(i).done?Math.round(tp(i).ok/tp(i).done*100):0}% · ${tp(i).done} ejercicios</div></div>`).join('')}</div>
- <p class="mut">La preparación estimada es orientativa: se calcula con tus resultados en esta web y no predice tu nota real.</p>
- <div class="row"><button class="b" onclick="reset()">Reiniciar progreso</button></div>`}
-function cont(){let i=S.last;if(prog(i)>=100)i=[...Array(11).keys()].find(k=>prog(k)<100)??0;go('topic',i,tp(i).st?'practice':'learn')}
-function reset(){if(confirm('¿Seguro que quieres borrar todo tu progreso? Esta acción no se puede deshacer.')){S={tp:{},wrong:[],sims:[],time:0,mental:{done:0,ok:0},last:0};save();render()}}
-function topic(el){const i=arg;el.innerHTML=`<div class="mut">Tema ${i+1} · ${CA[i]}</div><h1>${TN[i]}</h1><div class="bar"><i style="width:${prog(i)}%"></i></div><div class="row"><button class="b ${tab=='learn'?'act':''}" onclick="go('topic',${i},'learn')">Aprender</button><button class="b ${tab=='practice'?'act':''}" onclick="go('topic',${i},'practice')">Practicar</button>${i>0?`<button class="b s" onclick="go('topic',${i-1})">← Anterior</button>`:''}${i<10?`<button class="b s" onclick="go('topic',${i+1})">Siguiente →</button>`:''}</div><div id="tb"></div>`;
- tab=='learn'?learn(Q('#tb'),i):practice(Q('#tb'),i)}
-function learn(h,i){const l=L[i];h.innerHTML=`<div class="card"><h3>1. Explicación</h3><p>${l.s}</p>${l.d||''}</div><div class="card"><h3>2. Fórmulas importantes</h3>${l.f.map(f=>`<div class="fm">$$${f}$$</div>`).join('')}</div><div class="card"><h3>3. Ejemplo resuelto</h3><p>${l.e}</p></div><div class="card"><h3>4. Errores frecuentes</h3><ul>${l.r.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="card"><h3>5. Comprueba que lo has entendido</h3><div id="q1"></div><hr style="border-color:#2a3060"><div id="q2"></div></div><div class="row"><button class="b p" id="gp">6. Pasar a practicar</button></div>`;
- ['#q1','#q2'].forEach(s=>{const c=h.querySelector(s);c.innerHTML=exBox()+'</div><div class="fb"></div>';attach(c,make(i,0))});
- h.querySelector('#gp').onclick=()=>{tp(i).st=1;save();go('topic',i,'practice')};mj(h)}
-function practice(h,i){h.innerHTML=`<div class="card"><h3>Practicar</h3><div class="row"><label>Dificultad <select id="lv"><option value="-1">Progresiva (fácil → difícil)</option><option value="0">Fácil</option><option value="1">Medio</option><option value="2">Difícil</option></select></label><label>Ejercicios <select id="nn"><option>15</option><option>20</option><option>30</option></select></label><button class="b p" id="go">Empezar</button></div><p class="mut">Los ejercicios se generan al azar cada vez y las opciones se mezclan. Pista = ayuda progresiva. Cuenta el primer intento.</p></div><div id="ss"></div>`;
- h.querySelector('#go').onclick=()=>{const lv=+h.querySelector('#lv').value,n=+h.querySelector('#nn').value,st=()=>runSess(h.querySelector('#ss'),build(i,lv,n),{again:st});st()}}
-function errPractice(){if(!S.wrong.length){go('errors');return}go('errors');Q('#rp').click()}
-function errors(el){const by=TN.map((n,i)=>[i,S.wrong.filter(w=>w.t==i).length]).filter(x=>x[1]);
- el.innerHTML=`<h1>Mis errores</h1>${S.wrong.length?`<div class="card"><p>Tienes <b>${S.wrong.length}</b> ejercicios fallados pendientes. Si aciertas uno al primer intento, desaparece de la lista.</p><p class="mut">${by.map(x=>TN[x[0]]+': '+x[1]).join(' · ')}</p><div class="row"><button class="b p" id="rp">Repetir ejercicios fallados</button><button class="b" id="cl">Vaciar lista</button></div></div><div id="ss"></div><div id="ls">${S.wrong.slice().reverse().slice(0,30).map(w=>`<details class="card"><summary>${TN[w.t]}</summary>${w.svg||''}<div class="q">${w.q}</div>${w.opts?'<ul>'+w.opts.map(o=>`<li>${o}</li>`).join('')+'</ul>':''}<div class="fb">${w.expl}</div></details>`).join('')}</div>`:'<div class="card">No tienes errores guardados. Cuando falles ejercicios, aparecerán aquí.</div>'}`;
- if(S.wrong.length){Q('#rp').onclick=()=>{const st=()=>{const l=sh(S.wrong).slice(0,20);if(!l.length)return go('errors');Q('#ls').style.display='none';runSess(Q('#ss'),l,{tag:1,again:()=>go('errors')})};st()};Q('#cl').onclick=()=>{if(confirm('¿Vaciar la lista de errores?')){S.wrong=[];save();render()}}}}
-/* ----- Simulacro ----- */
-function exam(el){const s=S.sims.slice(-5).reverse();el.innerHTML=`<h1>Simulacro de examen</h1><div class="card"><div class="row"><button class="b" data-n="11">Corto (11)</button><button class="b" data-n="22">Medio (22)</button><button class="b" data-n="33">Completo (33)</button><label>Preguntas <input type="number" id="n" min="11" max="55" value="22" style="width:80px"></label></div><div class="row"><label class="op"><input type="checkbox" id="cd"><span>Cuenta atrás</span></label><label>Minutos <input type="number" id="mn" min="1" max="180" value="33" style="width:80px"></label></div><p class="mut">Todos los temas con reparto equilibrado y dificultad mezclada. Sin pistas ni soluciones hasta entregar. Puedes dejar preguntas en blanco y volver.</p><button class="b p" id="st">Empezar simulacro</button></div>
- ${s.length?`<div class="card"><h3>Últimos simulacros</h3><table>${s.map(x=>`<tr><td>${x.d}</td><td>${x.n} preguntas</td><td><b>${x.nota}</b>/10</td></tr>`).join('')}</table></div>`:''}`;
- el.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{Q('#n').value=b.dataset.n;Q('#mn').value=Math.round(b.dataset.n*1.5)});Q('#n').oninput=()=>Q('#mn').value=Math.round(Q('#n').value*1.5);
- Q('#st').onclick=()=>{const n=Math.max(11,Math.min(55,+Q('#n').value||22));examRun(el,n,Q('#cd').checked?Math.max(1,+Q('#mn').value||30)*60:0)}}
-function examRun(el,n,secs){const qs=sh([...Array(n).keys()]).map(i=>make(i%11,(i+Math.floor(i/11))%3));let i=0,left=secs,done=0;const ans=Array(n).fill(null);
- const draw=()=>{el.innerHTML=`<div class="row"><b>Pregunta ${i+1}/${n}</b><span class="mut" id="tm" style="margin-left:auto">${secs?mmss(left):'sin límite de tiempo'}</span></div><div class="g">${qs.map((q,k)=>`<button class="b ${ans[k]?'an':''} ${k==i?'act':''}" data-k="${k}">${k+1}</button>`).join('')}</div><div class="card"><div class="mut">${TN[qs[i].t]}</div><div id="eb"></div></div><div class="row"><button class="b" id="pv">Anterior</button><button class="b" id="nx">Siguiente</button><button class="b p" id="fn" style="margin-left:auto">Entregar examen</button></div>`;
-  renderEx(Q('#eb'),qs[i],ans[i]);const sv=()=>{const a=getAns(Q('#eb'),qs[i]);ans[i]=a===''?null:a};
-  el.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{sv();i=+b.dataset.k;draw()});Q('#pv').onclick=()=>{sv();i=(i+n-1)%n;draw()};Q('#nx').onclick=()=>{sv();i=(i+1)%n;draw()};Q('#fn').onclick=()=>{sv();const u=ans.filter(a=>a==null).length;if(!u||confirm(`Tienes ${u} pregunta(s) sin responder. ¿Entregar igualmente?`))finish()};mj(el)};
- const finish=()=>{timers.forEach(clearInterval);timers=[];const by=TN.map(()=>[0,0]);let ok=0;const rs=qs.map((q,k)=>{const r=chk(q,ans[k]),o=r.ok===true;by[q.t][1]++;if(o){ok++;by[q.t][0]++}rec(q,o);return o});
-  const nota=Math.round(ok/n*100)/10,d=new Date().toLocaleDateString('es-ES');S.sims.push({d,n,nota});S.sims=S.sims.slice(-10);save();
-  el.innerHTML=`<h1>Resultado del simulacro</h1><div class="card"><div class="stat"><b>${nota}/10</b>${ok} de ${n} correctas</div></div><div class="card"><h3>Puntos por tema</h3><table>${by.map((x,t)=>x[1]?`<tr><td>${TN[t]}</td><td>${(x[0]*10/n).toFixed(2)} / ${(x[1]*10/n).toFixed(2)}</td><td class="${x[0]/x[1]<.6?'bad':'good'}">${Math.round(x[0]/x[1]*100)}%</td></tr>`:'').join('')}</table><p><b>Temas a repasar:</b> ${by.map((x,t)=>x[1]&&x[0]/x[1]<.6?`<a href="#" onclick="go('topic',${t},'practice');return false">${TN[t]}</a>`:'').filter(Boolean).join(', ')||'ninguno por debajo del 60%.'}</p></div><div class="row"><button class="b p" onclick="go('exam')">Otro simulacro</button><button class="b" onclick="go('errors')">Mis errores</button></div><h2>Corrección paso a paso</h2>${qs.map((q,k)=>`<details class="card"><summary>${k+1}. ${TN[q.t]} — <b class="${rs[k]?'good':'bad'}">${rs[k]?'correcta':'incorrecta'}</b></summary>${q.svg||''}<div class="q">${q.q}</div>${q.opts?'<ul>'+q.opts.map(o=>`<li>${o}</li>`).join('')+'</ul>':''}<p>Tu respuesta: ${ansTxt(q,ans[k])}${q.type=='mc'?'<br>Correcta: '+q.opts[q.ans]:''}</p><div class="fb">${q.expl}</div></details>`).join('')}`;mj(el)};
- draw();if(secs)timers.push(setInterval(()=>{left--;const t=Q('#tm');if(t)t.textContent=mmss(Math.max(0,left));if(left<=0){const a=getAns(Q('#eb')||document,qs[i]);finish()}},1000))}
-/* ----- Cálculo mental ----- */
-const pr=n=>n<0?`(${n})`:n,ft=(n,d)=>{const g=gcd(n,d);n/=g;d/=g;return d==1?`${n}`:`${n}/${d}`};
-const MG=[()=>{const a=R(-9,9),b=R(-9,9);return[T`$${a}+${pr(b)}$`,a+b]},()=>{const a=R(-12,12),b=R(-12,12);return[T`$${a}-${pr(b)}$`,a-b]},()=>{const a=R(2,12),b=R(-9,9);return[T`$${a}\cdot${pr(b)}$`,a*b]},()=>{const b=R(2,12),k=R(2,12);return[T`$${b*k}\div${b}$`,k]},
-()=>{const b=R(2,5),e=R(2,4);return R(0,1)?[T`$${b}^{${e}}$`,b**e]:[T`$(-${b})^{${e}}$`,(-b)**e]},()=>{const k=R(1,13);return[T`$\sqrt{${k*k}}$`,k]},()=>{const k=R(-5,5);return[T`$\sqrt[3]{${k**3}}$`,k]},
-()=>{const a=R(1,3),b=P([2,3,4,5,6]),c=R(1,3),d=P([2,3,4,5,6]),s=R(0,1)?1:-1,n=a*d+s*c*b,dd=b*d;return[T`$\frac{${a}}{${b}}${s<0?'-':'+'}\frac{${c}}{${d}}$ (fracción a/b)`,n/dd,ft(n,dd)]},
-()=>{const a=R(1,4),b=R(2,5),c=R(1,4),d=R(2,5);return[T`$\frac{${a}}{${b}}\cdot\frac{${c}}{${d}}$ (fracción a/b)`,a*c/(b*d),ft(a*c,b*d)]},()=>{const a=R(2,9),b=R(2,5),c=R(-5,5);return[T`$${a}+${b}\cdot${pr(c)}$`,a+b*c]},()=>{const k=R(2,9),e=R(2,3),b=R(2,4);return[T`$\sqrt{${k*k}}+${b}^{${e}}$`,k+b**e]},
-()=>{const b=R(2,5),e=R(1,3);return[T`$${b}^{-${e}}$ (fracción a/b)`,1/b**e,'1/'+b**e]},()=>{const a=R(2,9),b=R(2,9);return[T`$(${a}-${b})^2-${a*a}$`,(a-b)**2-a*a]},()=>{const a=R(2,5),m=R(1,4),n=R(1,4);return[T`$${a}^{${m}}\cdot${a}^{${n}}\div${a}^{${m+n-1}}$`,a]},()=>{const t=P([20,30,40,50]),d=R(1,2);return[T`$${t+d}^2$`,(t+d)**2]},()=>{const k=R(2,9);return[T`$(-${k})^2-${k}^2$`,0]}];
-function mental(el){el.innerHTML=`<h1>Reto de cálculo mental</h1><div class="card"><p>Sin calculadora. Una pregunta cada vez: Enter para comprobar y Enter para pasar a la siguiente. Fracciones como a/b.</p><div class="row"><label>Duración (minutos) <input type="number" id="mn" min="1" max="60" value="15" style="width:80px"></label><button class="b p" id="st">Empezar reto</button></div></div>`;
- Q('#st').onclick=()=>{let left=Math.max(1,Math.min(60,+Q('#mn').value||15))*60,ok=0,n=0,cur,err=[],stage=0;
-  const nxt=()=>{cur=P(MG)();stage=0;n=n;el.innerHTML=`<div class="row"><b>Reto de cálculo mental</b><span id="tm" style="margin-left:auto">${mmss(left)}</span></div><div class="card"><div class="mut">Aciertos: ${ok} / ${n}</div><div class="q" style="font-size:24px">${cur[0]}</div><div class="row"><input class="ai" id="an" autocomplete="off" placeholder="Respuesta"><button class="b p" id="ck">Comprobar</button><button class="b" id="fn">Finalizar</button></div><div class="fb" id="fb" style="display:none"></div></div>`;mj(el);const i=Q('#an');i.focus();Q('#ck').onclick=act;Q('#fn').onclick=end;i.onkeydown=e=>{if(e.key=='Enter')act()}};
-  const act=()=>{if(stage){return nxt()}const a=Q('#an').value,v=pNum(a);if(v==null){const f=Q('#fb');f.style.display='block';f.className='fb';f.textContent='Escribe un número o una fracción a/b.';return}
-   const o=Math.abs(v-cur[1])<1e-9;n++;S.mental.done++;if(o){ok++;S.mental.ok++}else err.push([cur[0],a,cur[2]||String(cur[1])]);save();stage=1;const f=Q('#fb');f.style.display='block';f.className='fb '+(o?'ok':'ko');f.innerHTML=o?'<b class="good">Correcto.</b> Enter para continuar.':`<b class="bad">Incorrecto.</b> Respuesta: ${cur[2]||cur[1]}. Enter para continuar.`;Q('#ck').textContent='Siguiente';Q('#an').onkeydown=e=>{if(e.key=='Enter')nxt()}};
-  const end=()=>{timers.forEach(clearInterval);timers=[];el.innerHTML=`<h1>Resultado del reto</h1><div class="card"><div class="stat"><b>${n?Math.round(ok/n*100):0}%</b>${ok} aciertos de ${n} preguntas</div></div>${err.length?`<div class="card"><h3>Errores</h3>${err.map(e=>`<div>${e[0]} → tu respuesta: <span class="bad">${e[1]}</span> · correcta: <b class="good">${e[2]}</b></div>`).join('')}</div>`:''}<div class="row"><button class="b p" onclick="go('mental')">Repetir con preguntas nuevas</button><button class="b" onclick="go('home')">Inicio</button></div>`;mj(el)};
-  nxt();timers.push(setInterval(()=>{left--;const t=Q('#tm');if(t)t.textContent=mmss(Math.max(0,left));if(left<=0)end()},1000))}}
-/* ============ INICIO ============ */
-function init(){setInterval(()=>{if(['topic','exam','mental'].includes(view)&&!document.hidden){S.time++;if(S.time%10==0)save()}},1000);render()}
-window.addEventListener('load',init);
+const $=s=>document.querySelector(s);
+const root=document.documentElement;
+
+/* ---------- Temas ---------- */
+const themes={tapete:['#0f2a22','#f2c14e'],medianoche:['#0b0d1f','#7c8cff'],rubi:['#2a0a12','#ff5d6c'],papel:['#efe6d2','#c2410c'],oceano:['#06222c','#2ee6c5'],neon:['#0a0a0a','#c6ff3d']};
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const load=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+function clearCustom(){['--bg','--bg2','--a','--b'].forEach(p=>root.style.removeProperty(p));save('custom','')}
+function setTheme(t){clearCustom();root.dataset.theme=t;save('theme',t);syncPickers();
+  document.querySelectorAll('#sw button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t))}
+function syncPickers(){requestAnimationFrame(()=>{const cs=getComputedStyle(root);
+  const hex=v=>{const c=document.createElement('canvas').getContext('2d');c.fillStyle=cs.getPropertyValue(v).trim();return c.fillStyle};
+  $('#cbg').value=hex('--bg');$('#ca').value=hex('--a');$('#cb').value=hex('--b')})}
+Object.entries(themes).forEach(([n,c])=>{const b=document.createElement('button');b.dataset.t=n;b.textContent=n;b.style.background=`linear-gradient(135deg,${c[0]} 55%,${c[1]} 55%)`;b.onclick=()=>setTheme(n);$('#sw').append(b)});
+function custom(){const bg=$('#cbg').value;root.style.setProperty('--bg',bg);root.style.setProperty('--bg2',`color-mix(in srgb,${bg} 85%,#fff 15%)`);
+  root.style.setProperty('--a',$('#ca').value);root.style.setProperty('--b',$('#cb').value);
+  save('custom',JSON.stringify([bg,$('#ca').value,$('#cb').value]))}
+['#cbg','#ca','#cb'].forEach(s=>$(s).addEventListener('input',custom));
+$('#reset').onclick=()=>setTheme('tapete');
+$('#pbtn').onclick=e=>{const o=$('#panel').classList.toggle('show');e.currentTarget.setAttribute('aria-expanded',o)};
+setTheme(load('theme')||'tapete');
+try{const c=JSON.parse(load('custom')||'null');if(c){$('#cbg').value=c[0];$('#ca').value=c[1];$('#cb').value=c[2];custom()}}catch(e){}
+addEventListener('pointermove',e=>{root.style.setProperty('--mx',e.clientX+'px');root.style.setProperty('--my',e.clientY+'px')});
+
+/* ---------- Baraja interactiva ---------- */
+const faces=[['A','♠'],['K','♥'],['Q','♣'],['J','♦'],['10','♠'],['7','♥'],['5','♣'],['3','♦'],['2','♠']];
+const N=faces.length,deck=$('#deck');
+faces.forEach((f,i)=>{const c=document.createElement('div');const back=i===N-1;
+  c.className='card'+(back?' back':'')+(!back&&'♥♦'.includes(f[1])?' red':'');
+  if(!back)c.innerHTML=`<div class="r">${f[0]}<small>${f[1]}</small></div><div class="big">${f[1]}</div>`;
+  c.style.zIndex=i;c.tabIndex=0;deck.append(c)});
+const cards=[...deck.children];
+const rad=d=>d*Math.PI/180;
+const modes={
+  abanico:i=>{const a=(i-(N-1)/2)*13,R=190;return[Math.sin(rad(a))*R,R*(1-Math.cos(rad(a)))-40,a]},
+  cascada:i=>[(i-(N-1)/2)*30,0,0],
+  rueda:i=>{const a=i*360/N;return[Math.sin(rad(a))*120,-Math.cos(rad(a))*120,a]},
+  espiral:i=>{const a=i*40;return[Math.sin(rad(a))*i*14,-Math.cos(rad(a))*i*14,a]},
+  pila:i=>[i*.6,-i*1.2,(i%2?1:-1)*2]
+};
+let cur='abanico';
+function go(m,btn){cur=m;cards.forEach((c,i)=>{const[x,y,r]=modes[m](i);c.style.transform=`translate(${x}px,${y}px) rotate(${r}deg)`;c.style.transitionDelay=(i*35)+'ms'});
+  document.querySelectorAll('#moves .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===m))}
+Object.keys(modes).concat('barajar').forEach(m=>{const b=document.createElement('button');b.className='chip';b.dataset.m=m;b.textContent=m[0].toUpperCase()+m.slice(1);b.setAttribute('aria-pressed','false');
+  b.onclick=()=>m==='barajar'?shuffle():go(m);$('#moves').append(b)});
+function shuffle(){cards.forEach(c=>{c.style.transitionDelay='0ms';c.style.transform=`translate(${(Math.random()-.5)*340}px,${(Math.random()-.5)*220}px) rotate(${(Math.random()-.5)*360}deg)`});
+  setTimeout(()=>{const o=[...Array(N).keys()].sort(()=>Math.random()-.5);cards.forEach((c,i)=>c.style.zIndex=o[i]);go('pila')},750);
+  setTimeout(()=>go(cur==='pila'?'abanico':cur),1500)}
+cards.forEach(c=>c.addEventListener('click',()=>{const ks=Object.keys(modes);go(ks[(ks.indexOf(cur)+1)%ks.length])}));
+addEventListener('load',()=>setTimeout(()=>go('abanico'),400));
+cards.forEach(c=>c.style.transform='translate(0,0)');
+
+/* ---------- Lecciones ---------- */
+const L={card:[
+ {t:'Agarre mecánico',d:1,s:['Apoya la baraja en la palma, con el índice en el borde corto superior.','Coloca el pulgar en un lateral y el resto de dedos en el lado opuesto.','Deja un ligero ángulo para que las cartas no resbalen.'],tip:'<b>Clave:</b> la presión es suave. Si te tiemblan los dedos, estás apretando demasiado.',q:'cardistry mechanic grip tutorial'},
+ {t:'Abanico',d:1,s:['Sujeta la baraja con una mano por el extremo.','Con el pulgar de la otra mano empuja las cartas de arriba en arco.','Gira la muñeca al abrir para un abanico parejo.'],tip:'<b>Truco:</b> flexiona la baraja un poco al principio, así se abre solo.',q:'cardistry fan tutorial beginner'},
+ {t:'Cascada',d:1,s:['Sujeta la baraja con ambas manos y dobla las cartas hacia arriba.','Libera las cartas del pulgar poco a poco.','Deja que caigan en fila continua sobre la mesa.'],tip:'<b>Pulso:</b> la velocidad de caída se controla con el pulgar, no con la fuerza.',q:'waterfall cascade cards tutorial'},
+ {t:'Corte Charlier',d:2,s:['Parte la baraja en dos mitades: una en la mano y otra con el índice y el pulgar.','Haz que la mitad inferior suba por el costado con el dedo corazón.','Une las dos mitades y vuelve al agarre inicial.'],tip:'<b>Ritmo:</b> practica primero a cámara lenta y sin mirar las manos.',q:'charlier cut one handed tutorial'},
+ {t:'Corte pivote',d:2,s:['Sujeta una mitad entre pulgar y dedo corazón por una esquina.','Gira la mitad sobre ese punto, sin soltarla.','Termina el giro encajando en la otra mitad.'],tip:'<b>Control:</b> el pivote es la esquina. Mantén ese punto fijo mientras gira.',q:'pivot cut cardistry tutorial'},
+ {t:'Resorte',d:2,s:['Dobla la baraja en arco, con ambas manos.','Suelta las cartas lentamente para que salten de una mano a la otra.','Aumenta la distancia entre manos con la práctica.'],tip:'<b>Cuidado:</b> usa una baraja que ya tengas «rodada», una nueva se rompe.',q:'spring riffle cards tutorial'}],
+magic:[
+ {t:'Carta clave',d:1,s:['Haz que el espectador elija una carta y la devuelva.','Mira la carta que queda justo debajo mientras la baraja.','Encuentra la carta elegida por la carta clave.'],tip:'<b>Base:</b> la mayoría de los trucos buenos son este principio con buena actuación.',q:'key card magic trick tutorial'},
+ {t:'Forzar una carta',d:2,s:['Ten la carta que quieres forzar en el fondo del grupo.','Pide al espectador que corte la baraja.','Pon el grupo con tu carta encima del otro y pídele que elija esa.'],tip:'<b>Naturalidad:</b> actúa con calma. Si miras la carta, la descubres.',q:'cross cut force tutorial'},
+ {t:'Falso corte',d:2,s:['Corta la baraja por la mitad.','Pon la mitad inferior encima de la superior.','Parece un corte normal, pero el orden se queda igual.'],tip:'<b>Detalle:</b> hazlo como si estuvieras hablando de otra cosa.',q:'false cut card magic tutorial'},
+ {t:'Doble elevación',d:3,s:['Sujeta dos cartas como si fueran una sola.','Levántalas con cuidado, sin que se noten los bordes.','Enseña «la carta» y vuelve a poner las dos sobre la baraja.'],tip:'<b>Práctica:</b> grábate con el móvil para ver si se nota el grosor.',q:'double lift card magic tutorial'},
+ {t:'Palmeo',d:3,s:['Coloca una carta en la base de los dedos.','Dobla la palma para que la carta quede escondida.','Mantén la mano relajada, como si no ocultara nada.'],tip:'<b>Naturalidad:</b> lo que delata es la tensión, no la carta.',q:'card palm tutorial beginner'},
+ {t:'Desvío de la atención',d:1,s:['Haz el movimiento secreto cuando el público se ríe o mira otra cosa.','Mira hacia donde quieres que miren.','Hazlo con una pausa natural, sin prisas.'],tip:'<b>Regla:</b> el público mira a donde miras tú.',q:'misdirection magic tutorial'}]};
+let kind='card',done={};
+try{done=JSON.parse(load('done')||'{}')}catch(e){}
+function render(){const list=$('#list');list.innerHTML='';
+  L[kind].forEach((l,i)=>{const id=kind+i;const el=document.createElement('div');el.className='lesson'+(done[id]?' done':'');
+    el.innerHTML=`<button class="lh" aria-expanded="false"><span class="tick">✓</span><strong>${l.t}</strong><span class="dots" title="Dificultad">${[1,2,3].map(n=>`<i class="${n<=l.d?'on':''}"></i>`).join('')}</span><span class="chev">+</span></button>
+    <div class="lb"><div><div class="lbi"><ol>${l.s.map(s=>`<li>${s}</li>`).join('')}</ol><div><div class="tip">${l.tip}</div><div class="acts"><a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(l.q)}">Ver vídeos</a><button class="btn fill mark">${done[id]?'Desmarcar':'Marcar como hecha'}</button></div></div></div></div></div>`;
+    const h=el.querySelector('.lh');h.onclick=()=>{const o=el.classList.toggle('open');h.setAttribute('aria-expanded',o)};
+    el.querySelector('.mark').onclick=e=>{done[id]=!done[id];save('done',JSON.stringify(done));el.classList.toggle('done',done[id]);e.target.textContent=done[id]?'Desmarcar':'Marcar como hecha';prog()};
+    list.append(el)});prog()}
+function prog(){const all=[...L.card.map((_,i)=>'card'+i),...L.magic.map((_,i)=>'magic'+i)];const n=all.filter(k=>done[k]).length;
+  $('#pt').textContent=`${n} de ${all.length}`;$('#pb').style.width=(n/all.length*100)+'%'}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{kind=t.dataset.k;document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));render()});
+render();
+
+/* ---------- Vídeos ---------- */
+$('#vf').onsubmit=e=>{e.preventDefault();const m=$('#vu').value.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);
+  $('#screen').innerHTML=m?`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?rel=0" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen title="Vídeo"></iframe>`:'No reconozco ese enlace. Prueba con uno como youtube.com/watch?v=...'};
+[['Cardistry para principiantes','cardistry for beginners'],['Primeros trucos de magia','easy card tricks beginners'],['Corte de una mano','one handed cut cardistry'],['Teoría de la magia','card magic theory misdirection']].forEach(([t,q])=>{
+  const a=document.createElement('a');a.target='_blank';a.rel='noopener';a.href='https://www.youtube.com/results?search_query='+encodeURIComponent(q);a.innerHTML=`<span>${t}</span><span>↗</span>`;$('#search').append(a)});
 </script>
 </body>
 </html>
